@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="typed-inject passes async factory output as a Promise to dependent factories" time="0.000821" classname="test" file="/private/tmp/durable-zero-composition-research-20261106/docs/arch-improvement/cycle-8/composition-api-research/container-semantics.test.mjs"/>
+	<testcase name="typed-inject does not automatically dispose the resolved object inside an async factory Promise" time="0.000085" classname="test" file="/private/tmp/durable-zero-composition-research-20261106/docs/arch-improvement/cycle-8/composition-api-research/container-semantics.test.mjs"/>
+	<testcase name="typed-inject explicit child scope needs explicit disposal in the published version" time="0.000085" classname="test" file="/private/tmp/durable-zero-composition-research-20261106/docs/arch-improvement/cycle-8/composition-api-research/container-semantics.test.mjs"/>
+	<testcase name="native AsyncDisposableStack awaits reverse-order cleanup and continues after a disposer throws" time="0.000713" classname="test" file="/private/tmp/durable-zero-composition-research-20261106/docs/arch-improvement/cycle-8/composition-api-research/container-semantics.test.mjs"/>
+	<!-- tests 4 -->
+	<!-- suites 0 -->
+	<!-- pass 4 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 87.902084 -->
+</testsuites>
