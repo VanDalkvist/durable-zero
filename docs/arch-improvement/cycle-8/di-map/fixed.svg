@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="2480" viewBox="0 0 1700 2480" role="img" aria-label="04 · Где выбор зашит; отдельно намеренные native owners"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs><style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;fill:#e2e8f0;font-size:16px}.small{font-size:13px;fill:#a8b6cc}.title{font-family:system-ui,sans-serif;font-size:29px;font-weight:700}.head{font-family:system-ui,sans-serif;font-size:20px;font-weight:600}</style><rect width="100%" height="100%" fill="#0b1220"/><text x="35" y="44" class="title">04 · Где выбор зашит; отдельно намеренные native owners</text><text x="35" y="74" class="small">Текущий PR85afe89 · читайте каждую строку слева направо · подробные ограничения и файлы в atlas.html</text>
+<rect x="35" y="95" width="12" height="12" rx="2" fill="#34d399"/>
+<text x="55" y="108" class="small">G: явная передача</text>
+<rect x="355" y="95" width="12" height="12" rx="2" fill="#fbbf24"/>
+<text x="375" y="108" class="small">Y: нижний API</text>
+<rect x="675" y="95" width="12" height="12" rx="2" fill="#fb7185"/>
+<text x="695" y="108" class="small">R: выбор зашит</text>
+<rect x="995" y="95" width="12" height="12" rx="2" fill="#94a3b8"/>
+<text x="1015" y="108" class="small">D: не подключено</text>
+<rect x="1315" y="95" width="12" height="12" rx="2" fill="#60a5fa"/>
+<text x="1335" y="108" class="small">N: native owner</text>
+<text x="35" y="136" class="small">Цвет = способ подключения, не итог тестов. Низкий уровень API не равен assembleDurableZero().</text>
+<text x="35" y="183" class="head">1. Где передаётся / где выбор зашит</text>
+<text x="610" y="183" class="head">2. Что выбрано сейчас</text>
+<text x="1185" y="183" class="head">3. Реальный потребитель</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-codemode/src/codemode.ts#L24" target="_blank">
+<rect x="35" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="50" y="229" class="" style="fill:#fb7185">R · Sandbox внутри adapter-codemode</text>
+<text x="50" y="272" class="">Нет factory/constructor option</text>
+</a>
+<rect x="610" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="625" y="229" class="" style="fill:#fb7185">new CodemodeSandbox() внутри register</text>
+<text x="625" y="272" class=""></text>
+<rect x="1185" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="1200" y="229" class="" style="fill:#fb7185">createCodemodeExtension({ sandbox })</text>
+<text x="1200" y="272" class=""></text>
+<path d="M520 269 L605 269" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 269 L1180 269" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="368" class="">Нельзя передать другой sandbox основному codemode адаптеру снаружи.</text>
+<text x="45" y="415" class="small">packages/adapter-codemode/src/codemode.ts:24</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L86" target="_blank">
+<rect x="35" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="50" y="455" class="" style="fill:#fb7185">R · Штатный coding-tools builtin</text>
+<text x="50" y="498" class="">Всегда добавляется в createCodingRegistry</text>
+</a>
+<rect x="610" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="625" y="455" class="" style="fill:#fb7185">coding-tools.ts → SDK</text>
+<text x="625" y="476" class="" style="fill:#fb7185">CodingTools/createCodingTools</text>
+<text x="625" y="498" class=""></text>
+<rect x="1185" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="1200" y="455" class="" style="fill:#fb7185">native Registry → read/write/edit/bash tools</text>
+<text x="1200" y="498" class=""></text>
+<path d="M520 495 L605 495" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 495 L1180 495" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="594" class="">customBuiltins с тем же id отклоняется. Это не утверждение, что Pi extensions вообще не могут переопределить отдельное имя tool.</text>
+<text x="45" y="641" class="small">packages/adapter-pi-durable/src/engine/harness-setup.ts:86</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L87" target="_blank">
+<rect x="35" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="50" y="681" class="" style="fill:#fb7185">R · Штатный subagents builtin</text>
+<text x="50" y="724" class="">Всегда добавляется в createCodingRegistry</text>
+</a>
+<rect x="610" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="625" y="681" class="" style="fill:#fb7185">builtin-extensions/subagents.ts</text>
+<text x="625" y="724" class=""></text>
+<rect x="1185" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="1200" y="681" class="" style="fill:#fb7185">native Registry → SDK subagent extension</text>
+<text x="1200" y="724" class=""></text>
+<path d="M520 721 L605 721" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 721 L1180 721" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="820" class="">Настройка policy — другое: меняет данные политики, не реализацию builtin.</text>
+<text x="45" y="867" class="small">packages/adapter-pi-durable/src/engine/harness-setup.ts:87</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L98" target="_blank">
+<rect x="35" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="50" y="907" class="" style="fill:#fb7185">R · Интегратор MCP</text>
+<text x="50" y="950" class="">runner extensionFactories: createMcpExtension()</text>
+</a>
+<rect x="610" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="625" y="907" class="" style="fill:#fb7185">Native Pi MCP ExtensionFactory</text>
+<text x="625" y="950" class=""></text>
+<rect x="1185" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="1200" y="907" class="" style="fill:#fb7185">ResourceLoader → ExtensionRunner → adapted</text>
+<text x="1200" y="928" class="" style="fill:#fb7185">tools</text>
+<text x="1200" y="950" class=""></text>
+<path d="M520 947 L605 947" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 947 L1180 947" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1046" class="">Отдельного upper-level mcpFactory нет. В PR readiness ожидается через mcp command; подтверждённый startup blocker остаётся открытым.</text>
+<text x="45" y="1093" class="small">packages/runner/src/composition.ts:98</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L104" target="_blank">
+<rect x="35" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="50" y="1133" class="" style="fill:#fb7185">R · Tool discovery / namespaces</text>
+<text x="50" y="1176" class="">Создаются/устанавливаются внутри Pi bootstrap</text>
+</a>
+<rect x="610" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="625" y="1133" class="" style="fill:#fb7185">createToolSearchExtension +</text>
+<text x="625" y="1154" class="" style="fill:#fb7185">DynamicCodemodeNamespaces</text>
+<text x="625" y="1176" class=""></text>
+<rect x="1185" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="1200" y="1133" class="" style="fill:#fb7185">native registry / extension tool sync</text>
+<text x="1200" y="1176" class=""></text>
+<path d="M520 1173 L605 1173" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1173 L1180 1173" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1272" class="">Это internal Pi integration, не готовый generic Zero slot.</text>
+<text x="45" y="1319" class="small">packages/adapter-pi-durable/src/engine/harness-setup.ts:104</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L105" target="_blank">
+<rect x="35" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="50" y="1359" class="" style="fill:#fb7185">R · Сам renderer prompt</text>
+<text x="50" y="1402" class="">Всегда registry.install(createPiPrompt(...))</text>
+</a>
+<rect x="610" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="625" y="1359" class="" style="fill:#fb7185">adapter-pi-durable/engine/prompt.ts</text>
+<text x="625" y="1402" class=""></text>
+<rect x="1185" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="1200" y="1359" class="" style="fill:#fb7185">native registry sections</text>
+<text x="1200" y="1402" class=""></text>
+<path d="M520 1399 L605 1399" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1399 L1180 1399" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1498" class="">PromptOptions позволяют менять данные, не выбирать другой renderer.</text>
+<text x="45" y="1545" class="small">packages/adapter-pi-durable/src/engine/harness-setup.ts:105</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L160" target="_blank">
+<rect x="35" y="1560" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="50" y="1585" class="" style="fill:#fb7185">R · RPC transport implementation</text>
+<text x="50" y="1628" class="">runner: new StdioJsonRpcServer(...)</text>
+</a>
+<rect x="610" y="1560" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="625" y="1585" class="" style="fill:#fb7185">protocol/StdioJsonRpcServer implements</text>
+<text x="625" y="1606" class="" style="fill:#fb7185">ITransportStrategy</text>
+<text x="625" y="1628" class=""></text>
+<rect x="1185" y="1560" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="1200" y="1585" class="" style="fill:#fb7185">Inline handler → SessionCoordinator</text>
+<text x="1200" y="1628" class=""></text>
+<path d="M520 1625 L605 1625" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1625 L1180 1625" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1724" class="">Socket-host оборачивает stdio через PassThrough; это реальный другой host, а не injected transport strategy.</text>
+<text x="45" y="1771" class="small">packages/runner/src/composition.ts:160</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-terminal/src/main.ts#L19" target="_blank">
+<rect x="35" y="1786" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="50" y="1811" class="" style="fill:#fb7185">R · Выбор готового терминального UI</text>
+<text x="50" y="1854" class="">local-terminal/main.ts hard import</text>
+</a>
+<rect x="610" y="1786" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="625" y="1811" class="" style="fill:#fb7185">@local-durable/terminal-ui.runDurableTui</text>
+<text x="625" y="1854" class=""></text>
+<rect x="1185" y="1786" width="480" height="137" rx="10" fill="#132034" stroke="#fb7185" stroke-width="1.7"/>
+<text x="1200" y="1811" class="" style="fill:#fb7185">ZeroTerminalClient через Native view/controller</text>
+<text x="1200" y="1832" class="" style="fill:#fb7185">contract</text>
+<text x="1200" y="1854" class=""></text>
+<path d="M520 1851 L605 1851" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1851 L1180 1851" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1950" class="">DI в source/controller функции есть; выбор самой реализации UI в готовом entrypoint фиксирован.</text>
+<text x="45" y="1997" class="small">packages/local-terminal/src/main.ts:19</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L192" target="_blank">
+<rect x="35" y="2012" width="480" height="137" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="50" y="2037" class="" style="fill:#60a5fa">N · Native session storage</text>
+<text x="50" y="2080" class="">runtime-loader:</text>
+<text x="50" y="2101" class="">openNodeSqliteStorage(location.database)</text>
+</a>
+<rect x="610" y="2012" width="480" height="137" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="625" y="2037" class="" style="fill:#60a5fa">SDK SQLite storage</text>
+<text x="625" y="2080" class=""></text>
+<rect x="1185" y="2012" width="480" height="137" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="1200" y="2037" class="" style="fill:#60a5fa">Harness.open → native sessions/tasks/documents</text>
+<text x="1200" y="2080" class=""></text>
+<path d="M520 2077 L605 2077" fill="none" stroke="#60a5fa" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 2077 L1180 2077" fill="none" stroke="#60a5fa" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="2176" class="">Это намеренно конкретный Pi-backed backend, не требование заменить SQLite сейчас. Core ISessionStore не управляет этим запуском.</text>
+<text x="45" y="2223" class="small">packages/adapter-pi-durable/src/engine/runtime-loader.ts:192</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L191" target="_blank">
+<rect x="35" y="2238" width="480" height="137" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="50" y="2263" class="" style="fill:#60a5fa">N · Native execution owner</text>
+<text x="50" y="2306" class="">PiDurableEngine → openDurable → Harness.open</text>
+</a>
+<rect x="610" y="2238" width="480" height="137" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="625" y="2263" class="" style="fill:#60a5fa">@earendil-works/pi-durable + Chord</text>
+<text x="625" y="2306" class=""></text>
+<rect x="1185" y="2238" width="480" height="137" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="1200" y="2263" class="" style="fill:#60a5fa">Model/tool/session execution; view/controller</text>
+<text x="1200" y="2284" class="" style="fill:#60a5fa">создаёт adapter</text>
+<text x="1200" y="2306" class=""></text>
+<path d="M520 2303 L605 2303" fill="none" stroke="#60a5fa" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 2303 L1180 2303" fill="none" stroke="#60a5fa" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="2402" class="">Отдельный HarnessFactory не выставлен. Не требуется инъектировать каждую SDK-внутренность или создавать второй execution loop.</text>
+<text x="45" y="2449" class="small">packages/adapter-pi-durable/src/engine/runtime-loader.ts:191</text>
+</svg>

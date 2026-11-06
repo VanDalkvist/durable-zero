@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1576" viewBox="0 0 1700 1576" role="img" aria-label="02 · Где DI / внешнее подключение уже есть"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs><style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;fill:#e2e8f0;font-size:16px}.small{font-size:13px;fill:#a8b6cc}.title{font-family:system-ui,sans-serif;font-size:29px;font-weight:700}.head{font-family:system-ui,sans-serif;font-size:20px;font-weight:600}</style><rect width="100%" height="100%" fill="#0b1220"/><text x="35" y="44" class="title">02 · Где DI / внешнее подключение уже есть</text><text x="35" y="74" class="small">Текущий PR85afe89 · читайте каждую строку слева направо · подробные ограничения и файлы в atlas.html</text>
+<rect x="35" y="95" width="12" height="12" rx="2" fill="#34d399"/>
+<text x="55" y="108" class="small">G: явная передача</text>
+<rect x="355" y="95" width="12" height="12" rx="2" fill="#fbbf24"/>
+<text x="375" y="108" class="small">Y: нижний API</text>
+<rect x="675" y="95" width="12" height="12" rx="2" fill="#fb7185"/>
+<text x="695" y="108" class="small">R: выбор зашит</text>
+<rect x="995" y="95" width="12" height="12" rx="2" fill="#94a3b8"/>
+<text x="1015" y="108" class="small">D: не подключено</text>
+<rect x="1315" y="95" width="12" height="12" rx="2" fill="#60a5fa"/>
+<text x="1335" y="108" class="small">N: native owner</text>
+<text x="35" y="136" class="small">Цвет = способ подключения, не итог тестов. Низкий уровень API не равен assembleDurableZero().</text>
+<text x="35" y="183" class="head">1. Где передаётся / где выбор зашит</text>
+<text x="610" y="183" class="head">2. Что выбрано сейчас</text>
+<text x="1185" y="183" class="head">3. Реальный потребитель</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L83" target="_blank">
+<rect x="35" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="50" y="229" class="" style="fill:#34d399">G · Движок агента</text>
+<text x="50" y="272" class="">assembleDurableZero({ engine })</text>
+</a>
+<rect x="610" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="625" y="229" class="" style="fill:#34d399">IAgentEngine → PiDurableEngine по умолчанию</text>
+<text x="625" y="272" class=""></text>
+<rect x="1185" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="1200" y="229" class="" style="fill:#34d399">SessionCoordinator.engine.start / submit /</text>
+<text x="1200" y="250" class="" style="fill:#34d399">abort / close</text>
+<text x="1200" y="272" class=""></text>
+<path d="M520 269 L605 269" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 269 L1180 269" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="368" class="">Generic engine получает stdio/Core, но сборка не возвращает ему native view/controller; terminal host требует эти порты.</text>
+<text x="45" y="415" class="small">packages/runner/src/composition.ts:83</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L121" target="_blank">
+<rect x="35" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="50" y="455" class="" style="fill:#34d399">G · Native execution environment</text>
+<text x="50" y="498" class="">assembleDurableZero({ nativeExecutionEnvFactory</text>
+<text x="50" y="519" class="">})</text>
+</a>
+<rect x="610" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="625" y="455" class="" style="fill:#34d399">SDK NodeExecutionEnv по умолчанию</text>
+<text x="625" y="498" class=""></text>
+<rect x="1185" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="1200" y="455" class="" style="fill:#34d399">ExecutionEnvs → Harness.env → filesystem / exec</text>
+<text x="1200" y="476" class="" style="fill:#34d399">tools</text>
+<text x="1200" y="498" class=""></text>
+<path d="M520 495 L605 495" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 495 L1180 495" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="594" class="">Нельзя одновременно передать Core factory. Полный SDK-контракт обязателен; CLI/socket-host не выставляют этот параметр.</text>
+<text x="45" y="641" class="small">packages/runner/src/composition.ts:121</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L65" target="_blank">
+<rect x="35" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="50" y="681" class="" style="fill:#34d399">G · Core execution environment</text>
+<text x="50" y="724" class="">assembleDurableZero({ executionEnvFactory })</text>
+</a>
+<rect x="610" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="625" y="681" class="" style="fill:#34d399">IExecutionEnvironment → CoreExecutionEnvAdapter</text>
+<text x="625" y="724" class=""></text>
+<rect x="1185" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="1200" y="681" class="" style="fill:#34d399">ExecutionEnvs → native Harness.env</text>
+<text x="1200" y="724" class=""></text>
+<path d="M520 721 L605 721" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 721 L1180 721" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="820" class="">Core SPI уже native SDK; неподдержанные расширенные операции дают typed unsupported, это не полная замена любого native backend.</text>
+<text x="45" y="867" class="small">packages/runner/src/composition.ts:65</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L89" target="_blank">
+<rect x="35" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="50" y="907" class="" style="fill:#34d399">G · Обычные Pi-расширения и tools</text>
+<text x="50" y="950" class="">assembleDurableZero({ extensions, skills,</text>
+<text x="50" y="971" class="">noGlobalExtensions })</text>
+</a>
+<rect x="610" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="625" y="907" class="" style="fill:#34d399">DefaultResourceLoader + ExtensionRunner</text>
+<text x="625" y="950" class=""></text>
+<rect x="1185" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="1200" y="907" class="" style="fill:#34d399">installExtensionTools → native Registry;</text>
+<text x="1200" y="928" class="" style="fill:#34d399">pending providers → ModelRuntime</text>
+<text x="1200" y="950" class=""></text>
+<path d="M520 947 L605 947" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 947 L1180 947" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1046" class="">Это работающий путь добавления, но не API удаления/замены стандартных builtins или интегратора MCP.</text>
+<text x="45" y="1093" class="small">packages/runner/src/composition.ts:89</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L161" target="_blank">
+<rect x="35" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="50" y="1133" class="" style="fill:#34d399">G · Вход / выход RPC</text>
+<text x="50" y="1176" class="">assembleDurableZero({ stdin, stdout,</text>
+<text x="50" y="1197" class="">onNotification })</text>
+</a>
+<rect x="610" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="625" y="1133" class="" style="fill:#34d399">Readable/Writable + callback</text>
+<text x="625" y="1176" class=""></text>
+<rect x="1185" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="1200" y="1133" class="" style="fill:#34d399">StdioJsonRpcServer и coordinator.events</text>
+<text x="1200" y="1176" class=""></text>
+<path d="M520 1173 L605 1173" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1173 L1180 1173" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1272" class="">Заменяются IO/наблюдатель, не сама transport strategy; socket-host использует именно этот путь.</text>
+<text x="45" y="1319" class="small">packages/runner/src/composition.ts:161</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/terminal-ui/src/index.d.ts#L43" target="_blank">
+<rect x="35" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="50" y="1359" class="" style="fill:#34d399">G · Данные, команды и settings UI</text>
+<text x="50" y="1402" class="">runDurableTui(source, controller, settings,</text>
+<text x="50" y="1423" class="">...)</text>
+</a>
+<rect x="610" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="625" y="1359" class="" style="fill:#34d399">TerminalViewSource / TerminalController /</text>
+<text x="625" y="1380" class="" style="fill:#34d399">TerminalSettings</text>
+<text x="625" y="1402" class=""></text>
+<rect x="1185" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="1200" y="1359" class="" style="fill:#34d399">terminal-ui/vendor/experimental/durable/tui.js</text>
+<text x="1200" y="1402" class=""></text>
+<path d="M520 1399 L605 1399" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1399 L1180 1399" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1498" class="">Это локальная DI на UI-границе. Native DurableView — намеренная concrete UI-зависимость, не утечка в Core.</text>
+<text x="45" y="1545" class="small">packages/terminal-ui/src/index.d.ts:43</text>
+</svg>

@@ -1,0 +1,3239 @@
+{
+  "sourceSha": "85afe89869e60b887703d215005d4c37bac3c177",
+  "date": "2026-11-06",
+  "scope": "All workspace src/bin/vendor import/export/require string references; tests/dist excluded. Syntactic source dependencies, not dynamic execution proof; package manifests separately flagged.",
+  "packages": [
+    {
+      "id": "adapter-codemode",
+      "name": "@durable-zero/adapter-codemode",
+      "dependencies": {
+        "@durable-zero/adapter-pi-durable": "workspace:*",
+        "@durable-zero/core": "workspace:*",
+        "@earendil-works/pi-codemode": "1.5.0",
+        "@earendil-works/pi-durable": "1.5.0"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "adapter-pi-ai",
+      "name": "@durable-zero/adapter-pi-ai",
+      "dependencies": {
+        "@durable-zero/core": "workspace:*",
+        "@earendil-works/pi-agent-core": "1.5.0",
+        "@earendil-works/pi-ai": "1.5.0",
+        "@earendil-works/pi-coding-agent": "1.5.0"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "adapter-pi-durable",
+      "name": "@durable-zero/adapter-pi-durable",
+      "dependencies": {
+        "@durable-zero/contracts": "workspace:*",
+        "@durable-zero/core": "workspace:*",
+        "@earendil-works/chord": "1.5.0",
+        "@earendil-works/pi-ai": "1.5.0",
+        "@earendil-works/pi-coding-agent": "1.5.0",
+        "@earendil-works/pi-durable": "1.5.0",
+        "@earendil-works/pi-schema": "1.5.0",
+        "proper-lockfile": "^4.1.2",
+        "quickjs-wasi": "^3.6.2",
+        "zod": "^4.6.7"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "cli",
+      "name": "durable-zero",
+      "dependencies": {
+        "@durable-zero/contracts": "workspace:*",
+        "@durable-zero/core": "workspace:*",
+        "@earendil-works/pi-coding-agent": "1.5.0",
+        "@earendil-works/pi-durable": "1.5.0"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "contracts",
+      "name": "@durable-zero/contracts",
+      "dependencies": {
+        "zod": "^4.6.7"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "core",
+      "name": "@durable-zero/core",
+      "dependencies": {
+        "@durable-zero/contracts": "workspace:*",
+        "zod": "^4.6.7"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "execution",
+      "name": "@durable-zero/execution",
+      "dependencies": {
+        "@durable-zero/core": "workspace:*"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "extension-pi-resource",
+      "name": "@durable-zero/extension-pi-resource",
+      "dependencies": {
+        "@durable-zero/adapter-pi-durable": "workspace:*",
+        "@durable-zero/core": "workspace:*",
+        "@earendil-works/pi-coding-agent": "1.5.0",
+        "@earendil-works/pi-durable": "1.5.0"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "local-runtime",
+      "name": "@local-durable/runtime",
+      "dependencies": {
+        "@durable-zero/runner": "workspace:*",
+        "@durable-zero/adapter-pi-durable": "workspace:*",
+        "@durable-zero/protocol": "workspace:*",
+        "@earendil-works/pi-coding-agent": "1.5.0",
+        "zod": "^4.6.7"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "local-terminal",
+      "name": "@local-durable/terminal",
+      "dependencies": {
+        "@local-durable/runtime": "workspace:*",
+        "@local-durable/terminal-ui": "workspace:*",
+        "@durable-zero/adapter-pi-durable": "workspace:*",
+        "@durable-zero/contracts": "workspace:*",
+        "zod": "^4.6.7"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "protocol",
+      "name": "@durable-zero/protocol",
+      "dependencies": {
+        "zod": "^4.6.7"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "runner",
+      "name": "@durable-zero/runner",
+      "dependencies": {
+        "@durable-zero/contracts": "workspace:*",
+        "@durable-zero/protocol": "workspace:*",
+        "@durable-zero/core": "workspace:*",
+        "@durable-zero/execution": "workspace:*",
+        "@durable-zero/adapter-pi-durable": "workspace:*",
+        "@durable-zero/adapter-pi-ai": "workspace:*",
+        "@durable-zero/adapter-codemode": "workspace:*",
+        "@durable-zero/extension-pi-resource": "workspace:*",
+        "@earendil-works/pi-durable": "1.5.0"
+      },
+      "peerDependencies": {}
+    },
+    {
+      "id": "terminal-ui",
+      "name": "@local-durable/terminal-ui",
+      "dependencies": {
+        "@earendil-works/pi-tui": "1.4.0",
+        "@silvia-odwyer/photon-node": "0.3.4",
+        "chalk": "6.0.0",
+        "cross-spawn": "7.0.6",
+        "highlight.js": "10.7.3",
+        "typebox": "1.3.27"
+      },
+      "peerDependencies": {
+        "@durable-zero/adapter-pi-durable": "workspace:*"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "adapter-codemode",
+      "to": "adapter-pi-durable",
+      "declared": true,
+      "kind": "type",
+      "references": [
+        {
+          "from": "adapter-codemode",
+          "to": "adapter-pi-durable",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/adapter-pi-durable",
+          "file": "packages/adapter-codemode/src/codemode.ts",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "from": "adapter-codemode",
+      "to": "core",
+      "declared": true,
+      "kind": "type",
+      "references": [
+        {
+          "from": "adapter-codemode",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-codemode/src/codemode.ts",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "from": "adapter-pi-ai",
+      "to": "contracts",
+      "declared": false,
+      "kind": "type",
+      "references": [
+        {
+          "from": "adapter-pi-ai",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-ai/src/model-setup.ts",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "from": "adapter-pi-ai",
+      "to": "core",
+      "declared": true,
+      "kind": "type",
+      "references": [
+        {
+          "from": "adapter-pi-ai",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-ai/src/model-provider.ts",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "contracts",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/binding-commands.ts",
+          "line": 4
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/bridge/contracts.ts",
+          "line": 2
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/bridge/contracts.ts",
+          "line": 3
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/bridge/contracts.ts",
+          "line": 4
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/bridge/contracts.ts",
+          "line": 5
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/bridge/contracts.ts",
+          "line": 6
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/pi-durable-engine.ts",
+          "line": 1
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-conversations.ts",
+          "line": 1
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-mapper.ts",
+          "line": 2
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-mapper.ts",
+          "line": 3
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-receipts.ts",
+          "line": 2
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-receipts.ts",
+          "line": 3
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "export",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-scope.ts",
+          "line": 1
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-source.ts",
+          "line": 2
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-source.ts",
+          "line": 3
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-graph-state.ts",
+          "line": 2
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/session-commands.ts",
+          "line": 8
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/session-state-commands.ts",
+          "line": 6
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/engine/task-tokens.ts",
+          "line": 2
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/adapter-pi-durable/src/session-fork.ts",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "core",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/binding-commands.ts",
+          "line": 5
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/types.ts",
+          "line": 3
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/core-execution-env-adapter.ts",
+          "line": 22
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 12
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/pi-durable-engine.ts",
+          "line": 2
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/pi-durable-engine.ts",
+          "line": 10
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/pi-durable-engine.ts",
+          "line": 11
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 24
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+          "line": 20
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/runtime.ts",
+          "line": 5
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/session-commands.ts",
+          "line": 7
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/subagent-docs.ts",
+          "line": 10
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/subagent-policy-ack.ts",
+          "line": 2
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/subagent-policy-state.ts",
+          "line": 1
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/engine/subagent.ts",
+          "line": 13
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/session-lock-eviction.ts",
+          "line": 9
+        },
+        {
+          "from": "adapter-pi-durable",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/adapter-pi-durable/src/store.ts",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "from": "cli",
+      "to": "contracts",
+      "declared": true,
+      "kind": "manifest-only",
+      "references": []
+    },
+    {
+      "from": "cli",
+      "to": "core",
+      "declared": true,
+      "kind": "manifest-only",
+      "references": []
+    },
+    {
+      "from": "cli",
+      "to": "runner",
+      "declared": false,
+      "kind": "source",
+      "references": [
+        {
+          "from": "cli",
+          "to": "runner",
+          "workspace": true,
+          "kind": "dynamic-or-resolve",
+          "specifier": "../../runner/dist/main.js",
+          "file": "packages/cli/bin/durable-zero.js",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "from": "core",
+      "to": "contracts",
+      "declared": true,
+      "kind": "type",
+      "references": [
+        {
+          "from": "core",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/core/src/session/coordinator.ts",
+          "line": 1
+        },
+        {
+          "from": "core",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/core/src/session/coordinator.ts",
+          "line": 12
+        },
+        {
+          "from": "core",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/core/src/session/engine.ts",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "from": "execution",
+      "to": "core",
+      "declared": true,
+      "kind": "type",
+      "references": [
+        {
+          "from": "execution",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/execution/src/adapters/local-node-env.ts",
+          "line": 4
+        },
+        {
+          "from": "execution",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/execution/src/adapters/mock-env.ts",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "from": "extension-pi-resource",
+      "to": "adapter-pi-durable",
+      "declared": true,
+      "kind": "manifest-only",
+      "references": []
+    },
+    {
+      "from": "extension-pi-resource",
+      "to": "core",
+      "declared": true,
+      "kind": "manifest-only",
+      "references": []
+    },
+    {
+      "from": "local-runtime",
+      "to": "adapter-pi-durable",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "local-runtime",
+          "to": "adapter-pi-durable",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/adapter-pi-durable",
+          "file": "packages/local-runtime/src/index.ts",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "from": "local-runtime",
+      "to": "protocol",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "local-runtime",
+          "to": "protocol",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/protocol",
+          "file": "packages/local-runtime/src/client.ts",
+          "line": 4
+        },
+        {
+          "from": "local-runtime",
+          "to": "protocol",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/protocol",
+          "file": "packages/local-runtime/src/index.ts",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "from": "local-runtime",
+      "to": "runner",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "local-runtime",
+          "to": "runner",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/runner",
+          "file": "packages/local-runtime/src/index.ts",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "from": "local-terminal",
+      "to": "adapter-pi-durable",
+      "declared": true,
+      "kind": "type",
+      "references": [
+        {
+          "from": "local-terminal",
+          "to": "adapter-pi-durable",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/adapter-pi-durable",
+          "file": "packages/local-terminal/src/client.ts",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "from": "local-terminal",
+      "to": "contracts",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "local-terminal",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/local-terminal/src/probe.ts",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "from": "local-terminal",
+      "to": "local-runtime",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "local-terminal",
+          "to": "local-runtime",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@local-durable/runtime/client",
+          "file": "packages/local-terminal/src/client.ts",
+          "line": 2
+        },
+        {
+          "from": "local-terminal",
+          "to": "local-runtime",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@local-durable/runtime/client",
+          "file": "packages/local-terminal/src/launch.ts",
+          "line": 11
+        },
+        {
+          "from": "local-terminal",
+          "to": "local-runtime",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@local-durable/runtime/client",
+          "file": "packages/local-terminal/src/probe.ts",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "from": "local-terminal",
+      "to": "terminal-ui",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "local-terminal",
+          "to": "terminal-ui",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@local-durable/terminal-ui",
+          "file": "packages/local-terminal/src/client.ts",
+          "line": 3
+        },
+        {
+          "from": "local-terminal",
+          "to": "terminal-ui",
+          "workspace": true,
+          "kind": "dynamic-or-resolve",
+          "specifier": "@local-durable/terminal-ui",
+          "file": "packages/local-terminal/src/main.ts",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "from": "runner",
+      "to": "adapter-codemode",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "runner",
+          "to": "adapter-codemode",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/adapter-codemode",
+          "file": "packages/runner/src/composition.ts",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "from": "runner",
+      "to": "adapter-pi-ai",
+      "declared": true,
+      "kind": "manifest-only",
+      "references": []
+    },
+    {
+      "from": "runner",
+      "to": "adapter-pi-durable",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "runner",
+          "to": "adapter-pi-durable",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/adapter-pi-durable",
+          "file": "packages/runner/src/composition.ts",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "from": "runner",
+      "to": "contracts",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "runner",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/runner/src/dispatch/normalizers.ts",
+          "line": 1
+        },
+        {
+          "from": "runner",
+          "to": "contracts",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/contracts",
+          "file": "packages/runner/src/dispatch/normalizers.ts",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "from": "runner",
+      "to": "core",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "runner",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/runner/src/composition.ts",
+          "line": 5
+        },
+        {
+          "from": "runner",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/runner/src/dispatch/normalizers.ts",
+          "line": 5
+        },
+        {
+          "from": "runner",
+          "to": "core",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/core",
+          "file": "packages/runner/src/dispatch/session-dispatcher.ts",
+          "line": 1
+        },
+        {
+          "from": "runner",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/core",
+          "file": "packages/runner/src/dispatch/types.ts",
+          "line": 1
+        },
+        {
+          "from": "runner",
+          "to": "core",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "../../../core/src/tools/host-bridge.ts",
+          "file": "packages/runner/src/host/host-bridge.ts",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "from": "runner",
+      "to": "execution",
+      "declared": true,
+      "kind": "manifest-only",
+      "references": []
+    },
+    {
+      "from": "runner",
+      "to": "extension-pi-resource",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "runner",
+          "to": "extension-pi-resource",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/extension-pi-resource",
+          "file": "packages/runner/src/composition.ts",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "from": "runner",
+      "to": "protocol",
+      "declared": true,
+      "kind": "source",
+      "references": [
+        {
+          "from": "runner",
+          "to": "protocol",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/protocol",
+          "file": "packages/runner/src/composition.ts",
+          "line": 3
+        },
+        {
+          "from": "runner",
+          "to": "protocol",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/protocol",
+          "file": "packages/runner/src/composition.ts",
+          "line": 4
+        },
+        {
+          "from": "runner",
+          "to": "protocol",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/protocol",
+          "file": "packages/runner/src/dispatch/normalizers.ts",
+          "line": 9
+        },
+        {
+          "from": "runner",
+          "to": "protocol",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "@durable-zero/protocol",
+          "file": "packages/runner/src/dispatch/session-dispatcher.ts",
+          "line": 6
+        },
+        {
+          "from": "runner",
+          "to": "protocol",
+          "workspace": true,
+          "kind": "import",
+          "specifier": "../../../protocol/src/methods/host.ts",
+          "file": "packages/runner/src/host/host-bridge.ts",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "from": "terminal-ui",
+      "to": "adapter-pi-durable",
+      "declared": true,
+      "kind": "type",
+      "references": [
+        {
+          "from": "terminal-ui",
+          "to": "adapter-pi-durable",
+          "workspace": true,
+          "kind": "type",
+          "specifier": "@durable-zero/adapter-pi-durable",
+          "file": "packages/terminal-ui/src/index.d.ts",
+          "line": 1
+        }
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "from": "adapter-codemode",
+      "to": "@earendil-works/pi-codemode",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-codemode",
+      "file": "packages/adapter-codemode/src/codemode.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-codemode",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable/codemode",
+      "file": "packages/adapter-codemode/src/codemode.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-ai",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-ai/src/model-provider.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-ai",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-ai/src/model-setup.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-ai",
+      "to": "@earendil-works/pi-ai",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-ai",
+      "file": "packages/adapter-pi-ai/src/model-setup.ts",
+      "line": 8
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/binding-commands.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/binding-docs.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-ai",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-ai",
+      "file": "packages/adapter-pi-durable/src/engine/bridge/assistant-message-builder.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/bridge/durable-contracts.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/bridge/native-tool-result.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/bridge/tool-args-resolver.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/bridge/tool-result-presentation.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/bridge/tool-result-presentation.ts",
+      "line": 6
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/bridge/watch-events-compat.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable/tools",
+      "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/coding-tools.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable/images/node",
+      "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/coding-tools.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/types.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/types.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable/codemode",
+      "file": "packages/adapter-pi-durable/src/engine/codemode-namespaces.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/adapter-pi-durable/src/engine/control-channel.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/engine/control-channel.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/chord/context",
+      "file": "packages/adapter-pi-durable/src/engine/control-channel.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/control-channel.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/conversation-id.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/chord",
+      "file": "packages/adapter-pi-durable/src/engine/core-execution-env-adapter.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable/env",
+      "file": "packages/adapter-pi-durable/src/engine/core-execution-env-adapter.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/extension-mount.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/extension-mount.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/chord",
+      "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-ai",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-ai",
+      "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable/tool-search",
+      "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+      "line": 11
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+      "line": 13
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable/env",
+      "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+      "line": 24
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/adapter-pi-durable/src/engine/prompt.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/prompt.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/prompt.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-bindings.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-ai",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-ai",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-controller.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-controller.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-controller.ts",
+      "line": 12
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-graph-mapper.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-graph-receipts.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-graph-state.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-hydration.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+      "line": 19
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable/storage/sqlite/node",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+      "line": 20
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/chord",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/chord/context",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-ai",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-ai",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+      "line": 18
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-ai",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-ai",
+      "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+      "line": 19
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/chord",
+      "file": "packages/adapter-pi-durable/src/engine/runtime.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/runtime.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/runtime.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@sinclair/typebox",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@sinclair/typebox/value",
+      "file": "packages/adapter-pi-durable/src/engine/schema-port.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@sinclair/typebox",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@sinclair/typebox",
+      "file": "packages/adapter-pi-durable/src/engine/schema-port.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/session-commands.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/session-commands.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/chord/context",
+      "file": "packages/adapter-pi-durable/src/engine/session-commands.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:net",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:net",
+      "file": "packages/adapter-pi-durable/src/engine/session-daemon.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/adapter-pi-durable/src/engine/session-daemon.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/engine/session-daemon.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/session-state-commands.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/session-state-commands.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/chord/context",
+      "file": "packages/adapter-pi-durable/src/engine/session-state-commands.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-ai",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-ai/utils/estimate",
+      "file": "packages/adapter-pi-durable/src/engine/session-state-commands.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:os",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:os",
+      "file": "packages/adapter-pi-durable/src/engine/shared/agent-dir.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/engine/shared/agent-dir.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/shared/extension-runner.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/shared/extension-ui-context.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/shared/subagent-envelope.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/adapter-pi-durable/src/engine/shared/version.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:module",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:module",
+      "file": "packages/adapter-pi-durable/src/engine/shared/version.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/engine/shared/version.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:url",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:url",
+      "file": "packages/adapter-pi-durable/src/engine/shared/version.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/stdout-guard.ts",
+      "line": 20
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/engine/stdout-guard.ts",
+      "line": 21
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:url",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:url",
+      "file": "packages/adapter-pi-durable/src/engine/stdout-guard.ts",
+      "line": 22
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/adapter-pi-durable/src/engine/stdout-guard.ts",
+      "line": 23
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-courier.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/chord",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-delivery-types.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-delivery-types.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-delivery.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/chord",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-docs.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-docs.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-policy-ack.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-watcher.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/chord/context",
+      "file": "packages/adapter-pi-durable/src/engine/subagent-watcher.ts",
+      "line": 11
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/chord",
+      "file": "packages/adapter-pi-durable/src/engine/subagent.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@sinclair/typebox",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@sinclair/typebox",
+      "file": "packages/adapter-pi-durable/src/engine/subagent.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/subagent.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/task-labels.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/task-tokens.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/adapter-pi-durable/src/engine/tool-adapter.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/engine/tool-adapter.ts",
+      "line": 8
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/adapter-pi-durable/src/session-fork.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:sqlite",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:sqlite",
+      "file": "packages/adapter-pi-durable/src/session-fork.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/session-fork.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:child_process",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:child_process",
+      "file": "packages/adapter-pi-durable/src/session-lock-eviction.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs/promises",
+      "file": "packages/adapter-pi-durable/src/session-lock-eviction.ts",
+      "line": 5
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/session-lock-eviction.ts",
+      "line": 6
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "proper-lockfile",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "proper-lockfile",
+      "file": "packages/adapter-pi-durable/src/session-lock-eviction.ts",
+      "line": 8
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:crypto",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:crypto",
+      "file": "packages/adapter-pi-durable/src/session-storage.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs/promises",
+      "file": "packages/adapter-pi-durable/src/session-storage.ts",
+      "line": 5
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:os",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:os",
+      "file": "packages/adapter-pi-durable/src/session-storage.ts",
+      "line": 6
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/session-storage.ts",
+      "line": 7
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/adapter-pi-durable/src/store.ts",
+      "line": 1
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/chord/context",
+      "file": "packages/adapter-pi-durable/src/store.ts",
+      "line": 2
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/chord",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/chord",
+      "file": "packages/adapter-pi-durable/src/store.ts",
+      "line": 3
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/adapter-pi-durable/src/store.ts",
+      "line": 4
+    },
+    {
+      "from": "adapter-pi-durable",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable/storage/sqlite/node",
+      "file": "packages/adapter-pi-durable/src/store.ts",
+      "line": 10
+    },
+    {
+      "from": "cli",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/cli/bin/durable-zero.js",
+      "line": 3
+    },
+    {
+      "from": "cli",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/cli/bin/durable-zero.js",
+      "line": 4
+    },
+    {
+      "from": "cli",
+      "to": "node:process",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:process",
+      "file": "packages/cli/bin/durable-zero.js",
+      "line": 5
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/diagnostics.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/runner-channel.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/runner-command.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/runner-event.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/runner-response.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/runtime-graph/schema.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/wire-context.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/wire-lifecycle.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/wire-message.ts",
+      "line": 1
+    },
+    {
+      "from": "contracts",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/contracts/src/wire-tool.ts",
+      "line": 1
+    },
+    {
+      "from": "core",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/core/src/policy/schema.ts",
+      "line": 1
+    },
+    {
+      "from": "execution",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/execution/src/adapters/local-node-env.ts",
+      "line": 1
+    },
+    {
+      "from": "execution",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/execution/src/adapters/local-node-env.ts",
+      "line": 2
+    },
+    {
+      "from": "execution",
+      "to": "node:child_process",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:child_process",
+      "file": "packages/execution/src/adapters/local-node-env.ts",
+      "line": 3
+    },
+    {
+      "from": "extension-pi-resource",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable",
+      "file": "packages/extension-pi-resource/src/pi-resource-ext.ts",
+      "line": 1
+    },
+    {
+      "from": "extension-pi-resource",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/extension-pi-resource/src/pi-resource-ext.ts",
+      "line": 2
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:net",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:net",
+      "file": "packages/local-runtime/src/client.ts",
+      "line": 1
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:events",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:events",
+      "file": "packages/local-runtime/src/client.ts",
+      "line": 2
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/local-runtime/src/client.ts",
+      "line": 3
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:net",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:net",
+      "file": "packages/local-runtime/src/index.ts",
+      "line": 1
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs/promises",
+      "file": "packages/local-runtime/src/index.ts",
+      "line": 2
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/local-runtime/src/index.ts",
+      "line": 3
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:stream",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:stream",
+      "file": "packages/local-runtime/src/index.ts",
+      "line": 4
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:events",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:events",
+      "file": "packages/local-runtime/src/index.ts",
+      "line": 5
+    },
+    {
+      "from": "local-runtime",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/local-runtime/src/index.ts",
+      "line": 10
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:util",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:util",
+      "file": "packages/local-runtime/src/main.ts",
+      "line": 1
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:net",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "node:net",
+      "file": "packages/local-runtime/src/notifications.ts",
+      "line": 1
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:stream",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:stream",
+      "file": "packages/local-runtime/src/notifications.ts",
+      "line": 2
+    },
+    {
+      "from": "local-runtime",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs/promises",
+      "file": "packages/local-runtime/src/skills.ts",
+      "line": 1
+    },
+    {
+      "from": "local-runtime",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/local-runtime/src/skills.ts",
+      "line": 2
+    },
+    {
+      "from": "local-terminal",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/local-terminal/src/client.ts",
+      "line": 4
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:child_process",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:child_process",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 1
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:crypto",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:crypto",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 2
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 3
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs/promises",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 4
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:os",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:os",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 5
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 6
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:timers",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:timers/promises",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 7
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:url",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:url",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 8
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:util",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:util",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 9
+    },
+    {
+      "from": "local-terminal",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/local-terminal/src/launch.ts",
+      "line": 10
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:util",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:util",
+      "file": "packages/local-terminal/src/main.ts",
+      "line": 1
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:util",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:util",
+      "file": "packages/local-terminal/src/probe.ts",
+      "line": 1
+    },
+    {
+      "from": "local-terminal",
+      "to": "node:readline",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:readline",
+      "file": "packages/local-terminal/src/probe.ts",
+      "line": 2
+    },
+    {
+      "from": "local-terminal",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/local-terminal/src/probe.ts",
+      "line": 5
+    },
+    {
+      "from": "protocol",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/protocol/src/jsonrpc/schema.ts",
+      "line": 1
+    },
+    {
+      "from": "protocol",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/protocol/src/jsonrpc/types.ts",
+      "line": 1
+    },
+    {
+      "from": "protocol",
+      "to": "zod",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "zod",
+      "file": "packages/protocol/src/methods/host.ts",
+      "line": 1
+    },
+    {
+      "from": "protocol",
+      "to": "node:stream",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:stream",
+      "file": "packages/protocol/src/transport/stdio-server.ts",
+      "line": 1
+    },
+    {
+      "from": "protocol",
+      "to": "node:string_decoder",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:string_decoder",
+      "file": "packages/protocol/src/transport/stdio-server.ts",
+      "line": 2
+    },
+    {
+      "from": "runner",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/runner/src/composition.ts",
+      "line": 1
+    },
+    {
+      "from": "runner",
+      "to": "node:stream",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "node:stream",
+      "file": "packages/runner/src/composition.ts",
+      "line": 2
+    },
+    {
+      "from": "runner",
+      "to": "@earendil-works/pi-durable",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-durable/env/node",
+      "file": "packages/runner/src/composition.ts",
+      "line": 10
+    },
+    {
+      "from": "runner",
+      "to": "@earendil-works/pi-coding-agent",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-coding-agent",
+      "file": "packages/runner/src/composition.ts",
+      "line": 18
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "type",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/src/index.d.ts",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:os",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:os",
+      "file": "packages/terminal-ui/vendor/config.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/terminal-ui/vendor/config.js",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:url",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:url",
+      "file": "packages/terminal-ui/vendor/config.js",
+      "line": 3
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/core/keybindings.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "fs",
+      "file": "packages/terminal-ui/vendor/core/keybindings.js",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "path",
+      "file": "packages/terminal-ui/vendor/core/keybindings.js",
+      "line": 3
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:os",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:os",
+      "file": "packages/terminal-ui/vendor/core/tools/render-utils.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/core/tools/render-utils.js",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/experimental/dcg-tool-card.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:child_process",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:child_process",
+      "file": "packages/terminal-ui/vendor/experimental/durable/git-footer.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs/promises",
+      "file": "packages/terminal-ui/vendor/experimental/durable/git-footer.js",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/experimental/durable/notices.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/experimental/durable/skill-picker.mjs",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/experimental/durable/terminal-diagnostics.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/experimental/durable/tui.js",
+      "line": 3
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:crypto",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:crypto",
+      "file": "packages/terminal-ui/vendor/experimental/durable/upstream.mjs",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/terminal-ui/vendor/experimental/durable/upstream.mjs",
+      "line": 3
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/terminal-ui/vendor/experimental/durable/upstream.mjs",
+      "line": 4
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:os",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:os",
+      "file": "packages/terminal-ui/vendor/experimental/durable/upstream.mjs",
+      "line": 6
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/terminal-ui/vendor/experimental/durable/upstream.mjs",
+      "line": 7
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/experimental/durable/upstream.mjs",
+      "line": 189
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:util",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:util",
+      "file": "packages/terminal-ui/vendor/extensions/activity-panel/activity.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:util",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:util",
+      "file": "packages/terminal-ui/vendor/extensions/automation-footer/goal-result.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:util",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:util",
+      "file": "packages/terminal-ui/vendor/extensions/automation-footer/goal-view.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/extensions/automation-footer/goal-view.js",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:util",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:util",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/renderers.mjs",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/renderers.mjs",
+      "line": 3
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/vendor.mjs",
+      "line": 6
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:os",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:os",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/vendor.mjs",
+      "line": 144
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/vendor.mjs",
+      "line": 145
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/vendor.mjs",
+      "line": 163
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/vendor.mjs",
+      "line": 460
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:url",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:url",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/vendor.mjs",
+      "line": 461
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/extensions/tool-cards/vendor.mjs",
+      "line": 1176
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/modes/interactive/components/assistant-message.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/modes/interactive/components/custom-editor.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/modes/interactive/components/keybinding-hints.js",
+      "line": 4
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/modes/interactive/components/status-indicator.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/modes/interactive/components/tool-execution.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/modes/interactive/components/user-message.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/modes/interactive/theme/system-theme.js",
+      "line": 21
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/terminal-ui/vendor/modes/interactive/theme/theme.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:path",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:path",
+      "file": "packages/terminal-ui/vendor/modes/interactive/theme/theme.js",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/modes/interactive/theme/theme.js",
+      "line": 3
+    },
+    {
+      "from": "terminal-ui",
+      "to": "chalk",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "chalk",
+      "file": "packages/terminal-ui/vendor/modes/interactive/theme/theme.js",
+      "line": 4
+    },
+    {
+      "from": "terminal-ui",
+      "to": "node:fs",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "node:fs",
+      "file": "packages/terminal-ui/vendor/utils/fs-watch.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@earendil-works/pi-tui",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "@earendil-works/pi-tui",
+      "file": "packages/terminal-ui/vendor/utils/image-convert.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "@silvia-odwyer/photon-node",
+      "workspace": false,
+      "kind": "dynamic-or-resolve",
+      "specifier": "@silvia-odwyer/photon-node",
+      "file": "packages/terminal-ui/vendor/utils/photon.js",
+      "line": 4
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/core.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 1
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/bash.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 2
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/c.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 3
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/cpp.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 4
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/csharp.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 5
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/dart.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 6
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/go.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 7
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/groovy.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 8
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/java.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 9
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/javascript.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 10
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/json.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 11
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/kotlin.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 12
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/lua.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 13
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/nix.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 14
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/perl.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 15
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/php.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 16
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/python.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 17
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/ruby.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 18
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/rust.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 19
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/scala.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 20
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/swift.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 21
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "import",
+      "specifier": "highlight.js/lib/languages/typescript.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 22
+    },
+    {
+      "from": "terminal-ui",
+      "to": "highlight.js",
+      "workspace": false,
+      "kind": "dynamic-or-resolve",
+      "specifier": "highlight.js/lib/index.js",
+      "file": "packages/terminal-ui/vendor/utils/syntax-highlight.js",
+      "line": 55
+    }
+  ]
+}

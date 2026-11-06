@@ -1,0 +1,23 @@
+flowchart LR
+  p0["Реализация runtime моделей<br/>PiDurableEngine.dependencies.modelRuntime"] -->|потребитель| v0["Harness.open({ models: modelRuntime }); controller.setModel"]
+  class p0,v0 lower;
+  p1["Native provider implementations<br/>PiDurableEngine.dependencies.nativeProviders"] -->|потребитель| v1["modelRuntime.registerNativeProvider(provider)"]
+  class p1,v1 lower;
+  p2["Settings/config provider<br/>PiDurableEngine.dependencies.settingsManager"] -->|потребитель| v2["createHarnessSettings; model defaults; resource loading"]
+  class p2,v2 lower;
+  p3["Ресурсы: AGENTS / skills / extensions<br/>PiDurableEngine.dependencies.resourceLoader"] -->|потребитель| v3["reload/getExtensions/getSkills → prompt и ExtensionRunner"]
+  class p3,v3 lower;
+  p4["Список дополнительных builtins<br/>dependencies.builtins / openDurable.builtins или plugins"] -->|потребитель| v4["createCodingRegistry → builtinRegistry.initAll(ctx)"]
+  class p4,v4 lower;
+  p5["Codemode как целый builtin<br/>dependencies.builtins: [свой codemode]"] -->|потребитель| v5["BuiltinExtension.register → registry.install(ext)"]
+  class p5,v5 lower;
+  p6["Файлы/содержимое system prompt<br/>dependencies.prompt / openDurable.prompt"] -->|потребитель| v6["createPiPrompt → buildSections"]
+  class p6,v6 lower;
+  p7["Динамические prompt sections<br/>dependencies.dynamicSections"] -->|потребитель| v7["ExtensionRunner и createPiPrompt читают/обновляют sections"]
+  class p7,v7 lower;
+
+classDef public fill:#0d3328,stroke:#34d399,color:#ecfdf5;
+classDef lower fill:#392d12,stroke:#fbbf24,color:#fffbeb;
+classDef fixed fill:#3b1923,stroke:#fb7185,color:#fff1f2;
+classDef dormant fill:#202c40,stroke:#94a3b8,color:#e2e8f0;
+classDef native fill:#142c4d,stroke:#60a5fa,color:#eff6ff;

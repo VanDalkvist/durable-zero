@@ -1,0 +1,19 @@
+flowchart LR
+  p0["Движок агента<br/>assembleDurableZero({ engine })"] -->|потребитель| v0["SessionCoordinator.engine.start / submit / abort / close"]
+  class p0,v0 public;
+  p1["Native execution environment<br/>assembleDurableZero({ nativeExecutionEnvFactory })"] -->|потребитель| v1["ExecutionEnvs → Harness.env → filesystem / exec tools"]
+  class p1,v1 public;
+  p2["Core execution environment<br/>assembleDurableZero({ executionEnvFactory })"] -->|потребитель| v2["ExecutionEnvs → native Harness.env"]
+  class p2,v2 public;
+  p3["Обычные Pi-расширения и tools<br/>assembleDurableZero({ extensions, skills, noGlobalExtensions })"] -->|потребитель| v3["installExtensionTools → native Registry; pending providers → ModelRuntime"]
+  class p3,v3 public;
+  p4["Вход / выход RPC<br/>assembleDurableZero({ stdin, stdout, onNotification })"] -->|потребитель| v4["StdioJsonRpcServer и coordinator.events"]
+  class p4,v4 public;
+  p5["Данные, команды и settings UI<br/>runDurableTui(source, controller, settings, ...)"] -->|потребитель| v5["terminal-ui/vendor/experimental/durable/tui.js"]
+  class p5,v5 public;
+
+classDef public fill:#0d3328,stroke:#34d399,color:#ecfdf5;
+classDef lower fill:#392d12,stroke:#fbbf24,color:#fffbeb;
+classDef fixed fill:#3b1923,stroke:#fb7185,color:#fff1f2;
+classDef dormant fill:#202c40,stroke:#94a3b8,color:#e2e8f0;
+classDef native fill:#142c4d,stroke:#60a5fa,color:#eff6ff;

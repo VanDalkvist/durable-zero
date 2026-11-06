@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1576" viewBox="0 0 1700 1576" role="img" aria-label="05 · Контракты и модули, не включённые в штатный startup"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs><style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;fill:#e2e8f0;font-size:16px}.small{font-size:13px;fill:#a8b6cc}.title{font-family:system-ui,sans-serif;font-size:29px;font-weight:700}.head{font-family:system-ui,sans-serif;font-size:20px;font-weight:600}</style><rect width="100%" height="100%" fill="#0b1220"/><text x="35" y="44" class="title">05 · Контракты и модули, не включённые в штатный startup</text><text x="35" y="74" class="small">Текущий PR85afe89 · читайте каждую строку слева направо · подробные ограничения и файлы в atlas.html</text>
+<rect x="35" y="95" width="12" height="12" rx="2" fill="#34d399"/>
+<text x="55" y="108" class="small">G: явная передача</text>
+<rect x="355" y="95" width="12" height="12" rx="2" fill="#fbbf24"/>
+<text x="375" y="108" class="small">Y: нижний API</text>
+<rect x="675" y="95" width="12" height="12" rx="2" fill="#fb7185"/>
+<text x="695" y="108" class="small">R: выбор зашит</text>
+<rect x="995" y="95" width="12" height="12" rx="2" fill="#94a3b8"/>
+<text x="1015" y="108" class="small">D: не подключено</text>
+<rect x="1315" y="95" width="12" height="12" rx="2" fill="#60a5fa"/>
+<text x="1335" y="108" class="small">N: native owner</text>
+<text x="35" y="136" class="small">Цвет = способ подключения, не итог тестов. Низкий уровень API не равен assembleDurableZero().</text>
+<text x="35" y="183" class="head">1. Где передаётся / где выбор зашит</text>
+<text x="610" y="183" class="head">2. Что выбрано сейчас</text>
+<text x="1185" y="183" class="head">3. Реальный потребитель</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/models/provider.ts#L6" target="_blank">
+<rect x="35" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="50" y="229" class="" style="fill:#94a3b8">D · Core IModelProvider / adapter-pi-ai</text>
+<text x="50" y="272" class="">Есть в пакетах; в standard recipe не подключён</text>
+</a>
+<rect x="610" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="625" y="229" class="" style="fill:#94a3b8">PiAiModelProvider; setupRunnerModels</text>
+<text x="625" y="272" class=""></text>
+<rect x="1185" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="1200" y="229" class="" style="fill:#94a3b8">Самостоятельный model-setup helper, не native</text>
+<text x="1200" y="250" class="" style="fill:#94a3b8">runtime-loader</text>
+<text x="1200" y="272" class=""></text>
+<path d="M520 269 L605 269" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<path d="M1095 269 L1180 269" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<text x="1102" y="261" class="head" style="fill:#94a3b8">×</text>
+<text x="45" y="368" class="">Не нужно механически заставлять native Harness работать через этот unused generic port.</text>
+<text x="45" y="415" class="small">packages/core/src/models/provider.ts:6</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/session/store.ts#L8" target="_blank">
+<rect x="35" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="50" y="455" class="" style="fill:#94a3b8">D · Core ISessionStore / PiDurableSessionStore</text>
+<text x="50" y="498" class="">Есть standalone adapter; coordinator принимает</text>
+<text x="50" y="519" class="">только engine/sessionDir</text>
+</a>
+<rect x="610" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="625" y="455" class="" style="fill:#94a3b8">PiDurableSessionStore implements ISessionStore</text>
+<text x="625" y="498" class=""></text>
+<rect x="1185" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="1200" y="455" class="" style="fill:#94a3b8">Не mounted в native reference startup</text>
+<text x="1200" y="498" class=""></text>
+<path d="M520 495 L605 495" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<path d="M1095 495 L1180 495" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<text x="1102" y="487" class="head" style="fill:#94a3b8">×</text>
+<text x="45" y="594" class="">Не вводить параллельного владельца native session ради использования существующего интерфейса.</text>
+<text x="45" y="641" class="small">packages/core/src/session/store.ts:8</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/host/host-bridge.ts#L24" target="_blank">
+<rect x="35" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="50" y="681" class="" style="fill:#94a3b8">D · Host tool / interaction bridge</text>
+<text x="50" y="724" class="">runner HostBridge(requester), Core IHostBridge;</text>
+<text x="50" y="745" class="">Pi dependencies.hostBridge — placeholder</text>
+</a>
+<rect x="610" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="625" y="681" class="" style="fill:#94a3b8">HostBridge и legacy HostRpcManager существуют</text>
+<text x="625" y="702" class="" style="fill:#94a3b8">отдельно</text>
+<text x="625" y="724" class=""></text>
+<rect x="1185" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="1200" y="681" class="" style="fill:#94a3b8">Сборщик не создаёт HostBridge;</text>
+<text x="1200" y="702" class="" style="fill:#94a3b8">dependencies.hostBridge в execution path не</text>
+<text x="1200" y="723" class="" style="fill:#94a3b8">читается</text>
+<text x="1200" y="724" class=""></text>
+<path d="M520 721 L605 721" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<path d="M1095 721 L1180 721" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<text x="1102" y="713" class="head" style="fill:#94a3b8">×</text>
+<text x="45" y="820" class="">Core bridge и пустой Pi IHostBridge — разные типы. Legacy module globals не являются приемлемым DI решением.</text>
+<text x="45" y="867" class="small">packages/runner/src/host/host-bridge.ts:24</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/tools/sandbox.ts#L6" target="_blank">
+<rect x="35" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="50" y="907" class="" style="fill:#94a3b8">D · Core ISandboxExtension</text>
+<text x="50" y="950" class="">CodemodeExtension implements ISandboxExtension</text>
+</a>
+<rect x="610" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="625" y="907" class="" style="fill:#94a3b8">Lifecycle metadata id/name/version/teardown</text>
+<text x="625" y="950" class=""></text>
+<rect x="1185" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="1200" y="907" class="" style="fill:#94a3b8">Нет метода create/execute sandbox в этом Core</text>
+<text x="1200" y="928" class="" style="fill:#94a3b8">SPI</text>
+<text x="1200" y="950" class=""></text>
+<path d="M520 947 L605 947" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<path d="M1095 947 L1180 947" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<text x="1102" y="939" class="head" style="fill:#94a3b8">×</text>
+<text x="45" y="1046" class="">Не принимать implements интерфейса за возможность подменить конкретный CodemodeSandbox.</text>
+<text x="45" y="1093" class="small">packages/core/src/tools/sandbox.ts:6</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/dispatch/session-dispatcher.ts#L20" target="_blank">
+<rect x="35" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="50" y="1133" class="" style="fill:#94a3b8">D · Полный session dispatcher</text>
+<text x="50" y="1176" class="">createSessionDispatcher(options) существует</text>
+</a>
+<rect x="610" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="625" y="1133" class="" style="fill:#94a3b8">runner/dispatch/session-dispatcher.ts</text>
+<text x="625" y="1176" class=""></text>
+<rect x="1185" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="1200" y="1133" class="" style="fill:#94a3b8">В reference composition свой ограниченный</text>
+<text x="1200" y="1154" class="" style="fill:#94a3b8">inline handler</text>
+<text x="1200" y="1176" class=""></text>
+<path d="M520 1173 L605 1173" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<path d="M1095 1173 L1180 1173" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<text x="1102" y="1165" class="head" style="fill:#94a3b8">×</text>
+<text x="45" y="1272" class="">Замена resolver/container не реализует отсутствующие tools/register, binding/fork capabilities.</text>
+<text x="45" y="1319" class="small">packages/runner/src/dispatch/session-dispatcher.ts:20</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L10" target="_blank">
+<rect x="35" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="50" y="1359" class="" style="fill:#94a3b8">D · Пакет execution в default recipe</text>
+<text x="50" y="1402" class="">Можно явно использовать его NodeExecutionEnv в</text>
+<text x="50" y="1423" class="">Core factory</text>
+</a>
+<rect x="610" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="625" y="1359" class="" style="fill:#94a3b8">@durable-zero/execution vs native SDK</text>
+<text x="625" y="1380" class="" style="fill:#94a3b8">NodeExecutionEnv</text>
+<text x="625" y="1402" class=""></text>
+<rect x="1185" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#94a3b8" stroke-width="1.7"/>
+<text x="1200" y="1359" class="" style="fill:#94a3b8">По умолчанию runner импортирует SDK env/node,</text>
+<text x="1200" y="1380" class="" style="fill:#94a3b8">не execution package</text>
+<text x="1200" y="1402" class=""></text>
+<path d="M520 1399 L605 1399" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<path d="M1095 1399 L1180 1399" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<text x="1102" y="1391" class="head" style="fill:#94a3b8">×</text>
+<text x="45" y="1498" class="">Наличие workspace dependency в manifest не значит, что она включена в production recipe.</text>
+<text x="45" y="1545" class="small">packages/runner/src/composition.ts:10</text>
+</svg>

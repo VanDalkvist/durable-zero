@@ -1,0 +1,37 @@
+[
+  {
+    "id": "runtime",
+    "title": "01 · Реальный runtime и сообщения",
+    "file": "runtime.svg"
+  },
+  {
+    "id": "public",
+    "title": "02 · Где DI / внешнее подключение уже есть",
+    "file": "public.svg"
+  },
+  {
+    "id": "lower",
+    "title": "03 · Частично: нижний API есть, верхний recipe не пропускает",
+    "file": "lower.svg"
+  },
+  {
+    "id": "fixed",
+    "title": "04 · Где выбор зашит; отдельно намеренные native owners",
+    "file": "fixed.svg"
+  },
+  {
+    "id": "dormant",
+    "title": "05 · Контракты и модули, не включённые в штатный startup",
+    "file": "dormant.svg"
+  },
+  {
+    "id": "packages",
+    "title": "06 · Все workspace package dependencies",
+    "file": "packages.svg"
+  },
+  {
+    "id": "external",
+    "title": "07 · Прямые SDK / library imports",
+    "file": "external.svg"
+  }
+]

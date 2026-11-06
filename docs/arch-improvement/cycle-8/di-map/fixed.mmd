@@ -1,0 +1,27 @@
+flowchart LR
+  p0["Sandbox внутри adapter-codemode<br/>Нет factory/constructor option"] -->|потребитель| v0["createCodemodeExtension({ sandbox })"]
+  class p0,v0 fixed;
+  p1["Штатный coding-tools builtin<br/>Всегда добавляется в createCodingRegistry"] -->|потребитель| v1["native Registry → read/write/edit/bash tools"]
+  class p1,v1 fixed;
+  p2["Штатный subagents builtin<br/>Всегда добавляется в createCodingRegistry"] -->|потребитель| v2["native Registry → SDK subagent extension"]
+  class p2,v2 fixed;
+  p3["Интегратор MCP<br/>runner extensionFactories: createMcpExtension()"] -->|потребитель| v3["ResourceLoader → ExtensionRunner → adapted tools"]
+  class p3,v3 fixed;
+  p4["Tool discovery / namespaces<br/>Создаются/устанавливаются внутри Pi bootstrap"] -->|потребитель| v4["native registry / extension tool sync"]
+  class p4,v4 fixed;
+  p5["Сам renderer prompt<br/>Всегда registry.install(createPiPrompt(...))"] -->|потребитель| v5["native registry sections"]
+  class p5,v5 fixed;
+  p6["RPC transport implementation<br/>runner: new StdioJsonRpcServer(...)"] -->|потребитель| v6["Inline handler → SessionCoordinator"]
+  class p6,v6 fixed;
+  p7["Выбор готового терминального UI<br/>local-terminal/main.ts hard import"] -->|потребитель| v7["ZeroTerminalClient через Native view/controller contract"]
+  class p7,v7 fixed;
+  p8["Native session storage<br/>runtime-loader: openNodeSqliteStorage(location.database)"] -->|потребитель| v8["Harness.open → native sessions/tasks/documents"]
+  class p8,v8 native;
+  p9["Native execution owner<br/>PiDurableEngine → openDurable → Harness.open"] -->|потребитель| v9["Model/tool/session execution; view/controller создаёт adapter"]
+  class p9,v9 native;
+
+classDef public fill:#0d3328,stroke:#34d399,color:#ecfdf5;
+classDef lower fill:#392d12,stroke:#fbbf24,color:#fffbeb;
+classDef fixed fill:#3b1923,stroke:#fb7185,color:#fff1f2;
+classDef dormant fill:#202c40,stroke:#94a3b8,color:#e2e8f0;
+classDef native fill:#142c4d,stroke:#60a5fa,color:#eff6ff;

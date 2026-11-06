@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="2028" viewBox="0 0 1700 2028" role="img" aria-label="03 · Частично: нижний API есть, верхний recipe не пропускает"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs><style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;fill:#e2e8f0;font-size:16px}.small{font-size:13px;fill:#a8b6cc}.title{font-family:system-ui,sans-serif;font-size:29px;font-weight:700}.head{font-family:system-ui,sans-serif;font-size:20px;font-weight:600}</style><rect width="100%" height="100%" fill="#0b1220"/><text x="35" y="44" class="title">03 · Частично: нижний API есть, верхний recipe не пропускает</text><text x="35" y="74" class="small">Текущий PR85afe89 · читайте каждую строку слева направо · подробные ограничения и файлы в atlas.html</text>
+<rect x="35" y="95" width="12" height="12" rx="2" fill="#34d399"/>
+<text x="55" y="108" class="small">G: явная передача</text>
+<rect x="355" y="95" width="12" height="12" rx="2" fill="#fbbf24"/>
+<text x="375" y="108" class="small">Y: нижний API</text>
+<rect x="675" y="95" width="12" height="12" rx="2" fill="#fb7185"/>
+<text x="695" y="108" class="small">R: выбор зашит</text>
+<rect x="995" y="95" width="12" height="12" rx="2" fill="#94a3b8"/>
+<text x="1015" y="108" class="small">D: не подключено</text>
+<rect x="1315" y="95" width="12" height="12" rx="2" fill="#60a5fa"/>
+<text x="1335" y="108" class="small">N: native owner</text>
+<text x="35" y="136" class="small">Цвет = способ подключения, не итог тестов. Низкий уровень API не равен assembleDurableZero().</text>
+<text x="35" y="183" class="head">1. Где передаётся / где выбор зашит</text>
+<text x="610" y="183" class="head">2. Что выбрано сейчас</text>
+<text x="1185" y="183" class="head">3. Реальный потребитель</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-types.ts#L37" target="_blank">
+<rect x="35" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="50" y="229" class="" style="fill:#fbbf24">Y · Реализация runtime моделей</text>
+<text x="50" y="272" class="">PiDurableEngine.dependencies.modelRuntime</text>
+</a>
+<rect x="610" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="625" y="229" class="" style="fill:#fbbf24">Pi ModelRuntime; fallback ModelRuntime.create()</text>
+<text x="625" y="272" class=""></text>
+<rect x="1185" y="204" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1200" y="229" class="" style="fill:#fbbf24">Harness.open({ models: modelRuntime });</text>
+<text x="1200" y="250" class="" style="fill:#fbbf24">controller.setModel</text>
+<text x="1200" y="272" class=""></text>
+<path d="M520 269 L605 269" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 269 L1180 269" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="368" class="">assembleDurableZero не принимает этот слот. Требуется native ModelRuntime contract, не Core IModelProvider.</text>
+<text x="45" y="415" class="small">packages/adapter-pi-durable/src/engine/runtime-types.ts:37</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-types.ts#L38" target="_blank">
+<rect x="35" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="50" y="455" class="" style="fill:#fbbf24">Y · Native provider implementations</text>
+<text x="50" y="498" class="">PiDurableEngine.dependencies.nativeProviders</text>
+</a>
+<rect x="610" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="625" y="455" class="" style="fill:#fbbf24">SDK Provider[]</text>
+<text x="625" y="498" class=""></text>
+<rect x="1185" y="430" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1200" y="455" class="" style="fill:#fbbf24">modelRuntime.registerNativeProvider(provider)</text>
+<text x="1200" y="498" class=""></text>
+<path d="M520 495 L605 495" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 495 L1180 495" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="594" class="">provider/model строки выбирают модель, но не заменяют ModelRuntime. Прямой список providers не открыт верхним recipe.</text>
+<text x="45" y="641" class="small">packages/adapter-pi-durable/src/engine/runtime-types.ts:38</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L92" target="_blank">
+<rect x="35" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="50" y="681" class="" style="fill:#fbbf24">Y · Settings/config provider</text>
+<text x="50" y="724" class="">PiDurableEngine.dependencies.settingsManager</text>
+</a>
+<rect x="610" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="625" y="681" class="" style="fill:#fbbf24">Native SettingsManager</text>
+<text x="625" y="724" class=""></text>
+<rect x="1185" y="656" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1200" y="681" class="" style="fill:#fbbf24">createHarnessSettings; model defaults; resource</text>
+<text x="1200" y="702" class="" style="fill:#fbbf24">loading</text>
+<text x="1200" y="724" class=""></text>
+<path d="M520 721 L605 721" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 721 L1180 721" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="820" class="">Верхний runner всегда создаёт SettingsManager.create(cwd). Это native тип, не произвольный zero-neutral config provider.</text>
+<text x="45" y="867" class="small">packages/runner/src/composition.ts:92</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L94" target="_blank">
+<rect x="35" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="50" y="907" class="" style="fill:#fbbf24">Y · Ресурсы: AGENTS / skills / extensions</text>
+<text x="50" y="950" class="">PiDurableEngine.dependencies.resourceLoader</text>
+</a>
+<rect x="610" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="625" y="907" class="" style="fill:#fbbf24">DefaultResourceLoader; extension-pi-resource</text>
+<text x="625" y="928" class="" style="fill:#fbbf24">оборачивает его</text>
+<text x="625" y="950" class=""></text>
+<rect x="1185" y="882" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1200" y="907" class="" style="fill:#fbbf24">reload/getExtensions/getSkills → prompt и</text>
+<text x="1200" y="928" class="" style="fill:#fbbf24">ExtensionRunner</text>
+<text x="1200" y="950" class=""></text>
+<path d="M520 947 L605 947" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 947 L1180 947" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1046" class="">Основная фабрика всегда создаёт DefaultResourceLoader. extension-pi-resource — data/wiring wrapper, а не отдельный универсальный resource backend.</text>
+<text x="45" y="1093" class="small">packages/runner/src/composition.ts:94</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L129" target="_blank">
+<rect x="35" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="50" y="1133" class="" style="fill:#fbbf24">Y · Список дополнительных builtins</text>
+<text x="50" y="1176" class="">dependencies.builtins / openDurable.builtins</text>
+<text x="50" y="1197" class="">или plugins</text>
+</a>
+<rect x="610" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="625" y="1133" class="" style="fill:#fbbf24">BuiltinExtension[] (контракт в</text>
+<text x="625" y="1154" class="" style="fill:#fbbf24">adapter-pi-durable)</text>
+<text x="625" y="1176" class=""></text>
+<rect x="1185" y="1108" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1200" y="1133" class="" style="fill:#fbbf24">createCodingRegistry →</text>
+<text x="1200" y="1154" class="" style="fill:#fbbf24">builtinRegistry.initAll(ctx)</text>
+<text x="1200" y="1176" class=""></text>
+<path d="M520 1173 L605 1173" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1173 L1180 1173" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1272" class="">Верхний runner передаёт только штатный codemode. На нижнем уровне список добавляется к coding-tools/subagents, не заменяет их.</text>
+<text x="45" y="1319" class="small">packages/adapter-pi-durable/src/engine/runtime-loader.ts:129</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L86" target="_blank">
+<rect x="35" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="50" y="1359" class="" style="fill:#fbbf24">Y · Codemode как целый builtin</text>
+<text x="50" y="1402" class="">dependencies.builtins: [свой codemode]</text>
+</a>
+<rect x="610" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="625" y="1359" class="" style="fill:#fbbf24">adapter-codemode → createCodemodeExtension</text>
+<text x="625" y="1402" class=""></text>
+<rect x="1185" y="1334" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1200" y="1359" class="" style="fill:#fbbf24">BuiltinExtension.register →</text>
+<text x="1200" y="1380" class="" style="fill:#fbbf24">registry.install(ext)</text>
+<text x="1200" y="1402" class=""></text>
+<path d="M520 1399 L605 1399" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1399 L1180 1399" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1498" class="">Основной runner жёстко вызывает createCodemodeBuiltinExtension(); добавлять второй codemode поверх его списка нельзя.</text>
+<text x="45" y="1545" class="small">packages/runner/src/composition.ts:86</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L132" target="_blank">
+<rect x="35" y="1560" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="50" y="1585" class="" style="fill:#fbbf24">Y · Файлы/содержимое system prompt</text>
+<text x="50" y="1628" class="">dependencies.prompt / openDurable.prompt</text>
+</a>
+<rect x="610" y="1560" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="625" y="1585" class="" style="fill:#fbbf24">PromptOptions:</text>
+<text x="625" y="1606" class="" style="fill:#fbbf24">systemPromptPath/contextFiles/...</text>
+<text x="625" y="1628" class=""></text>
+<rect x="1185" y="1560" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1200" y="1585" class="" style="fill:#fbbf24">createPiPrompt → buildSections</text>
+<text x="1200" y="1628" class=""></text>
+<path d="M520 1625 L605 1625" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1625 L1180 1625" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1724" class="">Сам renderer createPiPrompt обязателен. resourceLoader/dynamicSections в итоговых options подставляются runtime-loader сверху.</text>
+<text x="45" y="1771" class="small">packages/adapter-pi-durable/src/engine/runtime-loader.ts:132</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L116" target="_blank">
+<rect x="35" y="1786" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="50" y="1811" class="" style="fill:#fbbf24">Y · Динамические prompt sections</text>
+<text x="50" y="1854" class="">dependencies.dynamicSections</text>
+</a>
+<rect x="610" y="1786" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="625" y="1811" class="" style="fill:#fbbf24">DynamicPromptSections по умолчанию</text>
+<text x="625" y="1854" class=""></text>
+<rect x="1185" y="1786" width="480" height="137" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1200" y="1811" class="" style="fill:#fbbf24">ExtensionRunner и createPiPrompt</text>
+<text x="1200" y="1832" class="" style="fill:#fbbf24">читают/обновляют sections</text>
+<text x="1200" y="1854" class=""></text>
+<path d="M520 1851 L605 1851" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1095 1851 L1180 1851" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="45" y="1950" class="">Верхний assembleDurableZero не выставляет этот параметр.</text>
+<text x="45" y="1997" class="small">packages/adapter-pi-durable/src/engine/runtime-loader.ts:116</text>
+</svg>

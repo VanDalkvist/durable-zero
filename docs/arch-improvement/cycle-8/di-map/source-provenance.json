@@ -1,0 +1,66 @@
+{
+  "sourceSha": "85afe89869e60b887703d215005d4c37bac3c177",
+  "artifactOnly": true,
+  "productSourceChanged": false,
+  "nativeProductTestsRerun": false,
+  "independentReview": false,
+  "sourceEvidenceSha256": {
+    "packages/adapter-codemode/src/codemode.ts": "c475ac286fc846abc732abef9f4c703eab446b665f67bbce4d4fb46f919cb0d6",
+    "packages/adapter-pi-ai/src/model-setup.ts": "f2c6e77f750c14b4ab03ba9b9a8913961a4e5305ecae76f7193dfbe56fabba63",
+    "packages/adapter-pi-durable/src/engine/builtin-extensions/coding-tools.ts": "e147e05bd074de0793b0b23446ee02ed8cf920f578603338a4e6dfd5699566eb",
+    "packages/adapter-pi-durable/src/engine/builtin-extensions/registry.ts": "63646bf811d46a67a39e601a3f26bab8856b70631e9add213c5f4422bfd3a1f1",
+    "packages/adapter-pi-durable/src/engine/builtin-extensions/subagents.ts": "5b47ac16a6c740ebaf182ad52cc261ebd33e56447644ba69b0d13f7e346c48fe",
+    "packages/adapter-pi-durable/src/engine/builtin-extensions/types.ts": "e47a1868a66330ba380f3885bdf5479559071b4f23f747264d8413605ff93ad2",
+    "packages/adapter-pi-durable/src/engine/extension-mount.ts": "960629db6140ace211a25b57d769002829b872f4ca2e002dffacb455f5d9f0db",
+    "packages/adapter-pi-durable/src/engine/harness-setup.ts": "cd7262079effbb328dbff007faeead1d003169531b577dacf71959c89db7b790",
+    "packages/adapter-pi-durable/src/engine/host-rpc.ts": "f171a8ec37ca199a3869fc7b242c24310eccd98a6fcb0d06c47950d0744ac7a1",
+    "packages/adapter-pi-durable/src/engine/pi-durable-engine.ts": "0775c0567228c7b6c40e215e3538ec1532a2b36846ea9cee8375473bf5a48d7e",
+    "packages/adapter-pi-durable/src/engine/prompt.ts": "a64bd84173c490f29226d7695973753f27b3082d48ebb03b8b1c1e399c44c099",
+    "packages/adapter-pi-durable/src/engine/runtime-loader.ts": "04e7b79b1a9b183d04d4732ba6435cb1de09876b8af639073199809477afb1b1",
+    "packages/adapter-pi-durable/src/engine/runtime-types.ts": "cf2938fc9faa7e3bbe7cff983198dc28404b5c9d02c0ad26206bd7d4eae5abe7",
+    "packages/adapter-pi-durable/src/store.ts": "96325c865c5d7f08b52c7ab3130e3e3e68af4fb928082efbe4f9d4452db3d0f6",
+    "packages/core/src/models/provider.ts": "462aaff1b7561cb3702eb42d814ed87763fece260b4d9c1fe6db11db5c342e7f",
+    "packages/core/src/session/coordinator.ts": "9adf0055a4282773c364bde2290916ff1959ee70495541b72c8c9fbe71718212",
+    "packages/core/src/session/store.ts": "38012acc2333467de4c6a069aba58f53fa724dc0ef4d74991c5a1050c42c3782",
+    "packages/core/src/tools/sandbox.ts": "d739e53ed622d6e7a2bebf69ff96afdfdf74e9f620da8156ffd4c57ecb850ddb",
+    "packages/execution/src/adapters/local-node-env.ts": "dfa5453d6da8267c7c0de6a38d2e824e39824ed30d7c8dbb01469e3cceadb118",
+    "packages/extension-pi-resource/src/pi-resource-ext.ts": "46d6c08eeb57efdd281c54479388ce2b7364b5e9d8f0ab58782e9fb7fd4960e3",
+    "packages/local-runtime/src/index.ts": "3076e7377eff491c5bf6e7b5af2a102cbbbd6c966a3cc512b934aef2d1620611",
+    "packages/local-terminal/src/main.ts": "06ceebfd75740cd5007e75f1b302fe505d85b7075dde7b8c79f9c65de7131eae",
+    "packages/protocol/src/transport/stdio-server.ts": "094a7c5738548c7930f85b5f1a9bf82e5b2c6e5d1483ea3ae0281e659c56160f",
+    "packages/runner/src/composition.ts": "9f85dfd0570142dd369e85b5045ea78ec2ad466353466d61aa9876a8a5a63c2a",
+    "packages/runner/src/dispatch/session-dispatcher.ts": "61b982c87ad1fb1dbbf85aee2fd793c3dff54e9c63b29b0dedbefcdcdbeb5bfc",
+    "packages/runner/src/host/host-bridge.ts": "6018bd4358f33bbcac82cc6f233342ce31452d4020b08a1967bfa70a0f713257",
+    "packages/terminal-ui/src/index.d.ts": "547488562dc418c552fc8a084dafeda1c54f9531574d46667d41cc35659efe4f"
+  },
+  "packageCount": 13,
+  "workspaceEdges": 29,
+  "bindingCount": 30,
+  "byStatus": {
+    "public": 6,
+    "lower": 8,
+    "fixed": 8,
+    "dormant": 6,
+    "native": 2
+  },
+  "svgXmlValidated": 7,
+  "browserCaptures": {
+    "runtime": {
+      "file": "preview-runtime.jpg",
+      "width": 1740,
+      "height": 980
+    },
+    "public": {
+      "file": "preview-public.jpg",
+      "width": 1700,
+      "height": 1600
+    },
+    "lower": {
+      "file": "preview-lower.jpg",
+      "width": 1700,
+      "height": 2040
+    }
+  },
+  "sourceMethod": "git archive exact SHA, TypeScript AST scan plus manual factory/consumer trace",
+  "validationScope": "Evidence/coverage and rendering, not product acceptance"
+}

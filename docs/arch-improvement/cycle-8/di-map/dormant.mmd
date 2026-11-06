@@ -1,0 +1,19 @@
+flowchart LR
+  p0["Core IModelProvider / adapter-pi-ai<br/>Есть в пакетах; в standard recipe не подключён"] -.->|нет mount| v0["Самостоятельный model-setup helper, не native runtime-loader"]
+  class p0,v0 dormant;
+  p1["Core ISessionStore / PiDurableSessionStore<br/>Есть standalone adapter; coordinator принимает только engine/sessionDir"] -.->|нет mount| v1["Не mounted в native reference startup"]
+  class p1,v1 dormant;
+  p2["Host tool / interaction bridge<br/>runner HostBridge(requester), Core IHostBridge; Pi dependencies.hostBridge — placeholder"] -.->|нет mount| v2["Сборщик не создаёт HostBridge; dependencies.hostBridge в execution path не читается"]
+  class p2,v2 dormant;
+  p3["Core ISandboxExtension<br/>CodemodeExtension implements ISandboxExtension"] -.->|нет mount| v3["Нет метода create/execute sandbox в этом Core SPI"]
+  class p3,v3 dormant;
+  p4["Полный session dispatcher<br/>createSessionDispatcher(options) существует"] -.->|нет mount| v4["В reference composition свой ограниченный inline handler"]
+  class p4,v4 dormant;
+  p5["Пакет execution в default recipe<br/>Можно явно использовать его NodeExecutionEnv в Core factory"] -.->|нет mount| v5["По умолчанию runner импортирует SDK env/node, не execution package"]
+  class p5,v5 dormant;
+
+classDef public fill:#0d3328,stroke:#34d399,color:#ecfdf5;
+classDef lower fill:#392d12,stroke:#fbbf24,color:#fffbeb;
+classDef fixed fill:#3b1923,stroke:#fb7185,color:#fff1f2;
+classDef dormant fill:#202c40,stroke:#94a3b8,color:#e2e8f0;
+classDef native fill:#142c4d,stroke:#60a5fa,color:#eff6ff;
