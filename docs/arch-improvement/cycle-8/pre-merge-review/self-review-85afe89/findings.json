@@ -1,0 +1,22 @@
+[
+  {
+    "severity": "high",
+    "title": "[P1] Optional HTTP MCP initialization can prevent the entire runtime from becoming ready",
+    "file": "packages/adapter-pi-durable/src/engine/extension-mount.ts",
+    "line": 181,
+    "status": "open",
+    "detail": "New awaited headless mcp command waits for the whole initial connection promise. A peer returning initialize but not acknowledging notifications/initialized stalls it beyond configured request timeout. Baseline reaches ready; latest does not. This also affects assembly recreation during reload.",
+    "rule": "AP-011, AP-012, AP-023",
+    "fix": "Use cancellation-aware bounded readiness/failure handling without leaking owned resources or making an optional tool provider a permanent Harness startup prerequisite."
+  },
+  {
+    "severity": "medium",
+    "title": "[P2] Launcher regression hashes a non-canonical workspace path and leaks an unexpected detached test runtime on macOS",
+    "file": "packages/local-terminal/test/launch-native.test.ts",
+    "line": 22,
+    "status": "open",
+    "detail": "The test hashes /tmp while launch.ts hashes realpath (/private/tmp). Its wrong-cwd rejection case opens a different session and waits forever; the test originally cleans up only its first observed runtime. Local fixture-only correction preserves assertions and tracks all announced owned PIDs; proposed patch retained, not pushed into PR.",
+    "rule": "AP-028, AP-076",
+    "fix": "Normalize expected workspace identity; keep alias reconnect coverage and failure-safe owned runtime teardown."
+  }
+]

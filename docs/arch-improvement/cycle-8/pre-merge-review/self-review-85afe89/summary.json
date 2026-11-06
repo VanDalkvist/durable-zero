@@ -1,0 +1,19 @@
+{
+  "head": "85afe89869e60b887703d215005d4c37bac3c177",
+  "baseline": "877b50b2a86a6f5e1137117b658070c48b3a295f",
+  "verdict": "FAIL, confirmed P1 startup regression; do not merge",
+  "neutralCorePackageChanges": [],
+  "upstreamMacosCases": {
+    "total": 54,
+    "passed": 53,
+    "failed": 1
+  },
+  "afterLocalFixtureCorrection": {
+    "total": 54,
+    "passed": 54,
+    "failed": 0
+  },
+  "productionRuntimeModifiedByReviewer": false,
+  "localFixturePatchAppliedUpstream": false,
+  "zeroExtractionStarted": false
+}

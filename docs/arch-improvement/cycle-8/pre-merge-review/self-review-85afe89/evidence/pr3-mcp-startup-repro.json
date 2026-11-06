@@ -1,0 +1,42 @@
+[
+  {
+    "name": "baseline-877b50b",
+    "runtimeRoot": "/var/folders/jl/wlqvk7_17hv0_0mcd3pg0br00000gn/T/durable-zero-pr3-build-zq6iqd9d",
+    "runtimePid": 10161,
+    "ready": true,
+    "elapsedMs": 972,
+    "configuredMcpTimeoutMs": 1000,
+    "requests": [
+      {
+        "method": "initialize",
+        "elapsedMs": 943
+      },
+      {
+        "method": "notifications/initialized",
+        "elapsedMs": 961
+      }
+    ],
+    "stdout": "{\"status\":\"ready\",\"pid\":10161,\"socketPath\":\"/tmp/pr3-mcp-startup-wISEaM/session/.terminal/runtime.sock\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "latest-85afe89",
+    "runtimeRoot": "/var/folders/jl/wlqvk7_17hv0_0mcd3pg0br00000gn/T/durable-zero-pr3-latest-n8d4wb1c",
+    "runtimePid": 10163,
+    "ready": false,
+    "elapsedMs": 4521,
+    "configuredMcpTimeoutMs": 1000,
+    "requests": [
+      {
+        "method": "initialize",
+        "elapsedMs": 851
+      },
+      {
+        "method": "notifications/initialized",
+        "elapsedMs": 856
+      }
+    ],
+    "stdout": "",
+    "stderr": ""
+  }
+]

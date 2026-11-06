@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="baseline: optional stalled MCP peer does not block native runtime readiness" time="1.139361" classname="test" file="/Users/vanya/.bb/thread-storage/thr_9yjb93iwmn/pr3-mcp-startup-repro.test.mjs"/>
+	<testcase name="latest: optional stalled MCP peer must not block native runtime readiness" time="4.537723" classname="test" file="/Users/vanya/.bb/thread-storage/thr_9yjb93iwmn/pr3-mcp-startup-repro.test.mjs" failure="{&amp;quot;name&amp;quot;:&amp;quot;latest-85afe89&amp;quot;,&amp;quot;runtimeRoot&amp;quot;:&amp;quot;/var/folders/jl/wlqvk7_17hv0_0mcd3pg0br00000gn/T/durable-zero-pr3-latest-n8d4wb1c&amp;quot;,&amp;quot;runtimePid&amp;quot;:8145,&amp;quot;ready&amp;quot;:false,&amp;quot;elapsedMs&amp;quot;:4520,&amp;quot;configuredMcpTimeoutMs&amp;quot;:1000,&amp;quot;requests&amp;quot;:[{&amp;quot;method&amp;quot;:&amp;quot;initialize&amp;quot;,&amp;quot;elapsedMs&amp;quot;:1062},{&amp;quot;method&amp;quot;:&amp;quot;notifications/initialized&amp;quot;,&amp;quot;elapsedMs&amp;quot;:1089}],&amp;quot;stdout&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;stderr&amp;quot;:&amp;quot;&amp;quot;}&#10;&#10;false !== true&#10;">
+		<failure type="testCodeFailure" message="{&amp;quot;name&amp;quot;:&amp;quot;latest-85afe89&amp;quot;,&amp;quot;runtimeRoot&amp;quot;:&amp;quot;/var/folders/jl/wlqvk7_17hv0_0mcd3pg0br00000gn/T/durable-zero-pr3-latest-n8d4wb1c&amp;quot;,&amp;quot;runtimePid&amp;quot;:8145,&amp;quot;ready&amp;quot;:false,&amp;quot;elapsedMs&amp;quot;:4520,&amp;quot;configuredMcpTimeoutMs&amp;quot;:1000,&amp;quot;requests&amp;quot;:[{&amp;quot;method&amp;quot;:&amp;quot;initialize&amp;quot;,&amp;quot;elapsedMs&amp;quot;:1062},{&amp;quot;method&amp;quot;:&amp;quot;notifications/initialized&amp;quot;,&amp;quot;elapsedMs&amp;quot;:1089}],&amp;quot;stdout&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;stderr&amp;quot;:&amp;quot;&amp;quot;}&#10;&#10;false !== true">
+[Error [ERR_TEST_FAILURE]: {"name":"latest-85afe89","runtimeRoot":"/var/folders/jl/wlqvk7_17hv0_0mcd3pg0br00000gn/T/durable-zero-pr3-latest-n8d4wb1c","runtimePid":8145,"ready":false,"elapsedMs":4520,"configuredMcpTimeoutMs":1000,"requests":[{"method":"initialize","elapsedMs":1062},{"method":"notifications/initialized","elapsedMs":1089}],"stdout":"","stderr":""}
+
+false !== true
+] {
+  code: 'ERR_TEST_FAILURE',
+  failureType: 'testCodeFailure',
+  cause: AssertionError [ERR_ASSERTION]: {"name":"latest-85afe89","runtimeRoot":"/var/folders/jl/wlqvk7_17hv0_0mcd3pg0br00000gn/T/durable-zero-pr3-latest-n8d4wb1c","runtimePid":8145,"ready":false,"elapsedMs":4520,"configuredMcpTimeoutMs":1000,"requests":[{"method":"initialize","elapsedMs":1062},{"method":"notifications/initialized","elapsedMs":1089}],"stdout":"","stderr":""}
+  
+  false !== true
+  
+      at TestContext.&lt;anonymous> (file:///Users/vanya/.bb/thread-storage/thr_9yjb93iwmn/pr3-mcp-startup-repro.test.mjs:87:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+}
+		</failure>
+	</testcase>
+	<!-- tests 2 -->
+	<!-- suites 0 -->
+	<!-- pass 1 -->
+	<!-- fail 1 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 6825.230334 -->
+</testsuites>
