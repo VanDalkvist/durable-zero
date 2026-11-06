@@ -59,8 +59,14 @@
       "file": "preview-lower.jpg",
       "width": 1700,
       "height": 2040
+    },
+    "fixed": {
+      "file": "preview-fixed.jpg",
+      "width": 1700,
+      "height": 2500
     }
   },
   "sourceMethod": "git archive exact SHA, TypeScript AST scan plus manual factory/consumer trace",
-  "validationScope": "Evidence/coverage and rendering, not product acceptance"
+  "validationScope": "Evidence/coverage and rendering, not product acceptance",
+  "htmlSvgMode": "inline SVG with clickable source anchors"
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-	<testcase name="every binding has a real consumer/path, a limitation and source evidence at exact file:line" time="0.013476" classname="test" file="/private/tmp/durable-zero-di-map-20261106/docs/arch-improvement/cycle-8/di-map/verify-map.test.mjs"/>
-	<testcase name="all workspace packages are represented; source, type and manifest edges are distinguished" time="0.008393" classname="test" file="/private/tmp/durable-zero-di-map-20261106/docs/arch-improvement/cycle-8/di-map/verify-map.test.mjs"/>
-	<testcase name="every field of PiRuntimeDependencies is classified rather than inferred from interface existence" time="0.000438" classname="test" file="/private/tmp/durable-zero-di-map-20261106/docs/arch-improvement/cycle-8/di-map/verify-map.test.mjs"/>
-	<testcase name="atlas includes every binding, diagram view and current-not-target warning" time="0.000791" classname="test" file="/private/tmp/durable-zero-di-map-20261106/docs/arch-improvement/cycle-8/di-map/verify-map.test.mjs"/>
+	<testcase name="every binding has a real consumer/path, a limitation and source evidence at exact file:line" time="0.013159" classname="test" file="/private/tmp/durable-zero-di-map-20261106/docs/arch-improvement/cycle-8/di-map/verify-map.test.mjs"/>
+	<testcase name="all workspace packages are represented; source, type and manifest edges are distinguished" time="0.009048" classname="test" file="/private/tmp/durable-zero-di-map-20261106/docs/arch-improvement/cycle-8/di-map/verify-map.test.mjs"/>
+	<testcase name="every field of PiRuntimeDependencies is classified rather than inferred from interface existence" time="0.000407" classname="test" file="/private/tmp/durable-zero-di-map-20261106/docs/arch-improvement/cycle-8/di-map/verify-map.test.mjs"/>
+	<testcase name="atlas includes every binding, diagram view and current-not-target warning" time="0.001504" classname="test" file="/private/tmp/durable-zero-di-map-20261106/docs/arch-improvement/cycle-8/di-map/verify-map.test.mjs"/>
 	<!-- tests 4 -->
 	<!-- suites 0 -->
 	<!-- pass 4 -->
@@ -11,5 +11,5 @@
 	<!-- cancelled 0 -->
 	<!-- skipped 0 -->
 	<!-- todo 0 -->
-	<!-- duration_ms 121.320584 -->
+	<!-- duration_ms 99.971542 -->
 </testsuites>
