@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="930" viewBox="0 0 1700 930" role="img" aria-label="01 · Кто запускает и кто исполняет"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs><style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;fill:#e2e8f0;font-size:16px}.small{font-size:13px;fill:#a8b6cc}.title{font-family:system-ui,sans-serif;font-size:29px;font-weight:700}.head{font-family:system-ui,sans-serif;font-size:20px;font-weight:600}</style><rect width="100%" height="100%" fill="#0b1220"/><text x="35" y="44" class="title">01 · Кто запускает и кто исполняет</text><text x="35" y="74" class="small">Фактические процессы и сообщения · prompt возвращает admission, результат приходит событиями · не graph imports</text>
+<rect x="35" y="95" width="12" height="12" rx="2" fill="#34d399"/>
+<text x="55" y="108" class="small">G: явная передача</text>
+<rect x="355" y="95" width="12" height="12" rx="2" fill="#fbbf24"/>
+<text x="375" y="108" class="small">Y: нижний API</text>
+<rect x="675" y="95" width="12" height="12" rx="2" fill="#fb7185"/>
+<text x="695" y="108" class="small">R: выбор зашит</text>
+<rect x="995" y="95" width="12" height="12" rx="2" fill="#94a3b8"/>
+<text x="1015" y="108" class="small">D: не подключено</text>
+<rect x="1315" y="95" width="12" height="12" rx="2" fill="#60a5fa"/>
+<text x="1335" y="108" class="small">N: native owner</text>
+<text x="35" y="136" class="small">Цвет = способ подключения, не итог тестов. Низкий уровень API не равен assembleDurableZero().</text>
+<rect x="30" y="178" width="400" height="670" rx="14" fill="none" stroke="#40546f" stroke-dasharray="8 5"/><rect x="460" y="178" width="1210" height="670" rx="14" fill="none" stroke="#40546f" stroke-dasharray="8 5"/>
+<text x="50" y="211" class="head">Клиентский процесс</text>
+<text x="480" y="211" class="head">Процесс runtime / session owner</text>
+<rect x="60" y="245" width="340" height="115" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="75" y="270" class="" style="fill:#34d399">local-terminal</text>
+<text x="75" y="313" class="">ZeroTerminalClient + terminal-ui</text>
+<rect x="510" y="245" width="340" height="115" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="525" y="270" class="" style="fill:#60a5fa">local-runtime</text>
+<text x="525" y="313" class="">Unix socket JSON-RPC; admission</text>
+<text x="525" y="334" class="">/ reload queue</text>
+<rect x="900" y="245" width="340" height="115" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="915" y="270" class="" style="fill:#60a5fa">runner</text>
+<text x="915" y="313" class="">assembleDurableZero(); одна</text>
+<text x="915" y="334" class="">готовая сборка</text>
+<rect x="900" y="450" width="340" height="115" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="915" y="475" class="" style="fill:#34d399">core</text>
+<text x="915" y="518" class="">SessionCoordinator →</text>
+<text x="915" y="539" class="">IAgentEngine</text>
+<rect x="1290" y="450" width="340" height="115" rx="10" fill="#132034" stroke="#34d399" stroke-width="1.7"/>
+<text x="1305" y="475" class="" style="fill:#34d399">adapter-pi-durable</text>
+<text x="1305" y="518" class="">PiDurableEngine → openDurable()</text>
+<rect x="1290" y="675" width="340" height="125" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="1305" y="700" class="" style="fill:#60a5fa">SDK Harness + Chord</text>
+<text x="1305" y="743" class="">Единственный model/tool/session</text>
+<text x="1305" y="764" class="">execution owner</text>
+<rect x="510" y="675" width="340" height="125" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="525" y="700" class="" style="fill:#fbbf24">ModelRuntime + Registry</text>
+<text x="525" y="743" class="">LLM providers, builtin /</text>
+<text x="525" y="764" class="">extension tools</text>
+<rect x="900" y="675" width="340" height="125" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="915" y="700" class="" style="fill:#60a5fa">ExecutionEnvs + SQLite</text>
+<text x="915" y="743" class="">IO фабрика; native session</text>
+<text x="915" y="764" class="">storage</text>
+<path d="M405 305 L505 305" fill="none" stroke="#9cafc9" stroke-width="2" marker-end="url(#arr)"/>
+<text x="435.0" y="296.0" class="small" style="fill:#9cafc9">RPC</text>
+<path d="M855 305 L895 305" fill="none" stroke="#9cafc9" stroke-width="2" marker-end="url(#arr)"/>
+<text x="855.0" y="296.0" class="small" style="fill:#9cafc9">создаёт</text>
+<path d="M1070 365 L1070 445" fill="none" stroke="#9cafc9" stroke-width="2" marker-end="url(#arr)"/>
+<text x="1050.0" y="396.0" class="small" style="fill:#9cafc9">prompt</text>
+<path d="M1245 510 L1285 510" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+<text x="1245.0" y="501.0" class="small" style="fill:#34d399">engine.submit</text>
+<path d="M1460 570 L1460 670" fill="none" stroke="#60a5fa" stroke-width="2" marker-end="url(#arr)"/>
+<text x="1440.0" y="611.0" class="small" style="fill:#60a5fa">native submit</text>
+<path d="M1285 737 L1245 737" fill="none" stroke="#9cafc9" stroke-width="2" marker-end="url(#arr)"/>
+<text x="1245.0" y="728.0" class="small" style="fill:#9cafc9">env/storage</text>
+<path d="M1395 670 L1395 625 L680 625 L680 670" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr)"/>
+<text x="725" y="615" class="small" style="fill:#fbbf24">Harness: models / registry tools</text>
+<path d="M1460 802 L1460 875 L230 875 L230 365" fill="none" stroke="#34d399" stroke-dasharray="8 5" stroke-width="2" marker-end="url(#arr)"/>
+<text x="475" y="900" class="small" style="fill:#34d399">Native state/events → local-runtime notifications → ZeroTerminalClient → UI</text>
+<text x="60" y="415" class="head">Альтернативный вход:</text>
+<text x="60" y="450" class="">cli → runner/main.ts →</text>
+<text x="60" y="471" class="">assembleDurableZero(); тот же</text>
+<text x="60" y="492" class="">backend через stdio</text>
+<text x="510" y="410" class="small">local-runtime требует native view/controller;</text>
+<text x="510" y="435" class="small">custom IAgentEngine сам по себе их не даёт.</text>
+</svg>

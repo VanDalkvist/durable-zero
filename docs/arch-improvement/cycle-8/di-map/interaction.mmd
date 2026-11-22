@@ -1,0 +1,24 @@
+sequenceDiagram
+  participant U as terminal-ui
+  participant C as ZeroTerminalClient
+  participant S as local-runtime
+  participant R as runner / stdio
+  participant K as Core coordinator
+  participant E as PiDurableEngine
+  participant H as Native Harness
+  U->>C: submit(content)
+  C->>S: session/prompt (Unix JSON-RPC)
+  S->>R: bridge.request(session/prompt)
+  R->>K: prompt(content, options)
+  K->>E: submit(input, options)
+  E->>H: native controller.submit
+  H-->>E: submission / admission
+  E-->>K: PromptAdmissionReceipt
+  K-->>R: receipt
+  R-->>S: RPC response
+  S-->>C: RPC response
+  Note over H: Model/tool work belongs to native runtime, not another Zero loop
+  H-->>E: state / task / entry updates
+  E-->>S: native view + coordinator events
+  S-->>C: session/view + session/event notifications
+  C-->>U: subscribed view update

@@ -1,0 +1,72 @@
+[
+  {
+    "file": "typed-inject-npm.json",
+    "url": "https://registry.npmjs.org/typed-inject/latest",
+    "name": "typed-inject",
+    "version": "5.0.0",
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {
+      "node": ">=18"
+    }
+  },
+  {
+    "file": "awilix-npm.json",
+    "url": "https://registry.npmjs.org/awilix/latest",
+    "name": "awilix",
+    "version": "13.0.5",
+    "dependencies": {
+      "fast-glob": "^3.3.3"
+    },
+    "peerDependencies": {},
+    "engines": {
+      "node": ">=20.0.0"
+    }
+  },
+  {
+    "file": "inversify-npm.json",
+    "url": "https://registry.npmjs.org/inversify/latest",
+    "name": "inversify",
+    "version": "8.2.4",
+    "dependencies": {
+      "@inversifyjs/core": "15.0.2",
+      "@inversifyjs/common": "2.0.2",
+      "@inversifyjs/container": "3.1.4"
+    },
+    "peerDependencies": {},
+    "engines": {}
+  },
+  {
+    "file": "tsyringe-npm.json",
+    "url": "https://registry.npmjs.org/tsyringe/latest",
+    "name": "tsyringe",
+    "version": "4.10.0",
+    "dependencies": {
+      "tslib": "^1.9.3"
+    },
+    "peerDependencies": {},
+    "engines": {
+      "node": ">= 6.0.0"
+    }
+  },
+  {
+    "file": "effect-npm.json",
+    "url": "https://registry.npmjs.org/effect/latest",
+    "name": "effect",
+    "version": "4.1.2",
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {}
+  },
+  {
+    "file": "tie-di-npm.json",
+    "url": "https://registry.npmjs.org/@tie-di%2fcore/latest",
+    "name": "@tie-di/core",
+    "version": "0.2.0",
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {
+      "node": ">=20"
+    }
+  }
+]

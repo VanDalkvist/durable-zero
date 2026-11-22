@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-06",
+  "reviewedPrHead": "85afe89869e60b887703d215005d4c37bac3c177",
+  "pinnedSources": [
+    {
+      "repository": "nicojs/typed-inject",
+      "sha": "5d3c0276e65ade1d683239346488708b7a11e443",
+      "path": "src/InjectorImpl.ts",
+      "url": "https://raw.githubusercontent.com/nicojs/typed-inject/5d3c0276e65ade1d683239346488708b7a11e443/src/InjectorImpl.ts",
+      "sha256": "a9736ce2b116e96a1bf7e54aabbbfc67ad18f6cd167d1e4e80beb2c3ebaf9e6a",
+      "matchesInspectedSource": true
+    },
+    {
+      "repository": "jeffijoe/awilix",
+      "sha": "1daf3df5f935dadfb6c6b8de699b379c5b465053",
+      "path": "src/container.ts",
+      "url": "https://raw.githubusercontent.com/jeffijoe/awilix/1daf3df5f935dadfb6c6b8de699b379c5b465053/src/container.ts",
+      "sha256": "519407b94b575a2a52bb3ac4885d1e47aec6b70b9cbddc7eba8d4eb10a0c1649",
+      "matchesInspectedSource": true
+    },
+    {
+      "repository": "valtyr/tie-di",
+      "sha": "78e530439d26bdfac60294496581fb5217a0b2e5",
+      "path": "packages/core/README.md",
+      "url": "https://raw.githubusercontent.com/valtyr/tie-di/78e530439d26bdfac60294496581fb5217a0b2e5/packages/core/README.md",
+      "sha256": "02e4fa89ee26f90969fc96b620f5e59e4bf3168a08fbc24f998d17df2665b35c",
+      "matchesInspectedSource": true
+    }
+  ],
+  "microProbeRuntime": "Node v26.0.0",
+  "testedPublishedPackage": "typed-inject@5.0.0",
+  "publishedArchiveSha512IntegrityVerified": true,
+  "lifecycleScriptsExecuted": false,
+  "productSourceChanged": false,
+  "independentAgentReview": false,
+  "scope": "primary-source research plus four synthetic semantic probes, not native product acceptance"
+}

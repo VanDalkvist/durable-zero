@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-06",
+  "status": "research-not-implementation",
+  "reviewedPrHead": "85afe89869e60b887703d215005d4c37bac3c177",
+  "recommendation": "Контейнер-независимый API композиции; начать с явных factories/recipes. Если понадобится произвольный межплагинный dependency graph, использовать готовый resolver за адаптером, не писать свой универсальный контейнер ради нуля зависимостей.",
+  "approaches": [
+    ["Явные factories + готовый recipe", "Для замены существующих частей", "Просто, прозрачно, без DI framework. Wiring описан обычным кодом."],
+    ["Module API + готовый resolver внутри", "Для произвольных сервисов и зависимостей между плагинами", "Автоматический graph/scopes; дополнительный lifecycle и контракт адаптера."],
+    ["API конкретного контейнера в публичном SDK", "Если сознательно строим ecosystem вокруг него", "Привязывает все плагины к типам и семантике контейнера; для Zero не рекомендую."]
+  ],
+  "candidates": [
+    ["Awilix", "Без обязательных decorators, factories/scopes/strict mode", "Async initialization и порядок teardown требуют отдельного внимания; dispose не закрывает child scopes.", "Возможный внутренний контейнер host, не обязательный Zero SDK"],
+    ["typed-inject", "Типизированный, явный, без runtime dependencies в manifest", "Async factory выдаёт Promise; не решает native async startup автоматически.", "Не выбирать только ради zero-transitives"],
+    ["Inversify", "Настоящие async bindings; доступны явные factories без обязательной metadata-инъекции", "Больше контейнерной семантики, чем сейчас доказанно нужно.", "Кандидат, если потребуется автоматический async graph"],
+    ["TSyringe", "Готовые registrations/scopes", "Документированный путь требует decorator metadata и Reflect polyfill; global-container паттерны.", "Не первый выбор для Zero"],
+    ["Effect Layers", "Выразительная композиция с ресурсами и ошибками acquisition", "Приносит Effect runtime/context/scope; можно оборачивать SDK, но цена шире DI.", "Не вводить только ради этой задачи"],
+    ["@tie-di/core", "Заявлены async resources, explicit ownership, modules; без runtime dependencies", "Pre-1.0; lifecycle/native integration в этом исследовании не проверены.", "Интересен для отдельного spike, пока не default"]
+  ],
+  "principles": [
+    {"title": "Сначала выбрать, потом создать", "detail": "Применить add/replace/remove к default recipe до инстанцирования. Сохранить проверку неявных дублей."},
+    {"title": "Явный owner и lifetime", "detail": "Созданные сборкой ресурсы закрывает сборка; borrowed values не закрываются ею. Core не получает универсальный resolve()."},
+    {"title": "Учитывать native ownership при reload", "detail": "Проверить чистый plan заранее; не поднимать два Harness одновременно на одной session lease. Timeout должен иметь реальный downstream cancellation/cleanup."},
+    {"title": "Доказывать эффект подмены", "detail": "Native Harness исполняет custom builtin, default не стартует, disable переживает reload, failed startup не оставляет owned resources."}
+  ],
+  "verification": {
+    "microProbes": "4/4 passed; tests investigate published typed-inject@5.0.0 and native AsyncDisposableStack semantics, not Zero acceptance",
+    "productCodeChanged": false,
+    "globalInstall": false,
+    "nativeContainerIntegrationTested": false,
+    "brainRecallQuery": "Neither call completed within its bounded 7-second attempt; not used as evidence"
+  },
+  "sources": [
+    {"url": "https://blog.ploeh.dk/2014/06/10/pure-di/", "title": "Mark Seemann: Pure DI"},
+    {"url": "https://blog.ploeh.dk/2011/07/28/CompositionRoot/", "title": "Composition Root и граница контейнера"},
+    {"url": "https://github.com/jeffijoe/awilix/blob/1daf3df5f935dadfb6c6b8de699b379c5b465053/README.md", "title": "Awilix: scopes, strict mode, disposal"},
+    {"url": "https://github.com/nicojs/typed-inject/issues/30", "title": "typed-inject: async factories"},
+    {"url": "https://inversify.io/docs/fundamentals/binding/", "title": "Inversify: async bindings и request scope"},
+    {"url": "https://effect.website/docs/v4/api/effect/Layer", "title": "Effect v4 Layers"},
+    {"url": "https://github.com/valtyr/tie-di/blob/78e530439d26bdfac60294496581fb5217a0b2e5/packages/core/README.md", "title": "tie-di: modules и resource ownership"}
+  ]
+}

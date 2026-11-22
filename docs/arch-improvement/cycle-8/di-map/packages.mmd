@@ -1,0 +1,43 @@
+flowchart LR
+  adapter_codemode["adapter-codemode"]
+  adapter_pi_ai["adapter-pi-ai"]
+  adapter_pi_durable["adapter-pi-durable"]
+  cli["cli"]
+  contracts["contracts"]
+  core["core"]
+  execution["execution"]
+  extension_pi_resource["extension-pi-resource"]
+  local_runtime["local-runtime"]
+  local_terminal["local-terminal"]
+  protocol["protocol"]
+  runner["runner"]
+  terminal_ui["terminal-ui"]
+  adapter_codemode -.->|type| adapter_pi_durable
+  adapter_codemode -.->|type| core
+  adapter_pi_ai -.->|type| contracts
+  adapter_pi_ai -.->|type| core
+  adapter_pi_durable -->|source| contracts
+  adapter_pi_durable -->|source| core
+  cli -.->|manifest| contracts
+  cli -.->|manifest| core
+  cli -->|source| runner
+  core -.->|type| contracts
+  execution -.->|type| core
+  extension_pi_resource -.->|manifest| adapter_pi_durable
+  extension_pi_resource -.->|manifest| core
+  local_runtime -->|source| adapter_pi_durable
+  local_runtime -->|source| protocol
+  local_runtime -->|source| runner
+  local_terminal -.->|type| adapter_pi_durable
+  local_terminal -->|source| contracts
+  local_terminal -->|source| local_runtime
+  local_terminal -->|source| terminal_ui
+  runner -->|source| adapter_codemode
+  runner -.->|manifest| adapter_pi_ai
+  runner -->|source| adapter_pi_durable
+  runner -->|source| contracts
+  runner -->|source| core
+  runner -.->|manifest| execution
+  runner -->|source| extension_pi_resource
+  runner -->|source| protocol
+  terminal_ui -.->|type| adapter_pi_durable

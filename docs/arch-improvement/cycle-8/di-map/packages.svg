@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1090" viewBox="0 0 1700 1090" role="img" aria-label="06 · Все зависимости workspace-пакетов"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs><style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;fill:#e2e8f0;font-size:16px}.small{font-size:13px;fill:#a8b6cc}.title{font-family:system-ui,sans-serif;font-size:29px;font-weight:700}.head{font-family:system-ui,sans-serif;font-size:20px;font-weight:600}</style><rect width="100%" height="100%" fill="#0b1220"/><text x="35" y="44" class="title">06 · Все зависимости workspace-пакетов</text><text x="35" y="74" class="small">Строка зависит от колонки · S: source import/export/resolve · T: только type · M: только manifest · tests/dist исключены</text>
+<text x="450" y="335" transform="rotate(-55 450 335)" class="small">adapter-codemode</text>
+<text x="501" y="335" transform="rotate(-55 501 335)" class="small">adapter-pi-ai</text>
+<text x="552" y="335" transform="rotate(-55 552 335)" class="small">adapter-pi-durable</text>
+<text x="603" y="335" transform="rotate(-55 603 335)" class="small">cli</text>
+<text x="654" y="335" transform="rotate(-55 654 335)" class="small">contracts</text>
+<text x="705" y="335" transform="rotate(-55 705 335)" class="small">core</text>
+<text x="756" y="335" transform="rotate(-55 756 335)" class="small">execution</text>
+<text x="807" y="335" transform="rotate(-55 807 335)" class="small">extension-pi-resource</text>
+<text x="858" y="335" transform="rotate(-55 858 335)" class="small">local-runtime</text>
+<text x="909" y="335" transform="rotate(-55 909 335)" class="small">local-terminal</text>
+<text x="960" y="335" transform="rotate(-55 960 335)" class="small">protocol</text>
+<text x="1011" y="335" transform="rotate(-55 1011 335)" class="small">runner</text>
+<text x="1062" y="335" transform="rotate(-55 1062 335)" class="small">terminal-ui</text>
+<text x="35" y="381" class="">adapter-codemode</text>
+<rect x="420" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="381" style="fill:#516076">—</text>
+<rect x="471" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="381" style="fill:#516076">·</text>
+<rect x="522" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="540" y="381" style="fill:#60a5fa">T</text>
+<rect x="573" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="381" style="fill:#516076">·</text>
+<rect x="624" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="642" y="381" style="fill:#516076">·</text>
+<rect x="675" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="693" y="381" style="fill:#60a5fa">T</text>
+<rect x="726" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="381" style="fill:#516076">·</text>
+<rect x="777" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="381" style="fill:#516076">·</text>
+<rect x="828" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="381" style="fill:#516076">·</text>
+<rect x="879" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="381" style="fill:#516076">·</text>
+<rect x="930" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="381" style="fill:#516076">·</text>
+<rect x="981" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="381" style="fill:#516076">·</text>
+<rect x="1032" y="350" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="381" style="fill:#516076">·</text>
+<text x="35" y="432" class="">adapter-pi-ai</text>
+<rect x="420" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="432" style="fill:#516076">·</text>
+<rect x="471" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="432" style="fill:#516076">—</text>
+<rect x="522" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="540" y="432" style="fill:#516076">·</text>
+<rect x="573" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="432" style="fill:#516076">·</text>
+<rect x="624" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="642" y="432" style="fill:#60a5fa">T</text>
+<rect x="675" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="693" y="432" style="fill:#60a5fa">T</text>
+<rect x="726" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="432" style="fill:#516076">·</text>
+<rect x="777" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="432" style="fill:#516076">·</text>
+<rect x="828" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="432" style="fill:#516076">·</text>
+<rect x="879" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="432" style="fill:#516076">·</text>
+<rect x="930" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="432" style="fill:#516076">·</text>
+<rect x="981" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="432" style="fill:#516076">·</text>
+<rect x="1032" y="401" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="432" style="fill:#516076">·</text>
+<text x="35" y="483" class="">adapter-pi-durable</text>
+<rect x="420" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="483" style="fill:#516076">·</text>
+<rect x="471" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="483" style="fill:#516076">·</text>
+<rect x="522" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="540" y="483" style="fill:#516076">—</text>
+<rect x="573" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="483" style="fill:#516076">·</text>
+<rect x="624" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="642" y="483" style="fill:#34d399">S</text>
+<rect x="675" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="693" y="483" style="fill:#34d399">S</text>
+<rect x="726" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="483" style="fill:#516076">·</text>
+<rect x="777" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="483" style="fill:#516076">·</text>
+<rect x="828" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="483" style="fill:#516076">·</text>
+<rect x="879" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="483" style="fill:#516076">·</text>
+<rect x="930" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="483" style="fill:#516076">·</text>
+<rect x="981" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="483" style="fill:#516076">·</text>
+<rect x="1032" y="452" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="483" style="fill:#516076">·</text>
+<text x="35" y="534" class="">cli</text>
+<rect x="420" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="534" style="fill:#516076">·</text>
+<rect x="471" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="534" style="fill:#516076">·</text>
+<rect x="522" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="540" y="534" style="fill:#516076">·</text>
+<rect x="573" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="534" style="fill:#516076">—</text>
+<rect x="624" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#a8b6cc"/><text x="642" y="534" style="fill:#a8b6cc">M</text>
+<rect x="675" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#a8b6cc"/><text x="693" y="534" style="fill:#a8b6cc">M</text>
+<rect x="726" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="534" style="fill:#516076">·</text>
+<rect x="777" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="534" style="fill:#516076">·</text>
+<rect x="828" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="534" style="fill:#516076">·</text>
+<rect x="879" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="534" style="fill:#516076">·</text>
+<rect x="930" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="534" style="fill:#516076">·</text>
+<rect x="981" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="999" y="534" style="fill:#34d399">S</text>
+<rect x="1032" y="503" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="534" style="fill:#516076">·</text>
+<text x="35" y="585" class="">contracts</text>
+<rect x="420" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="585" style="fill:#516076">·</text>
+<rect x="471" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="585" style="fill:#516076">·</text>
+<rect x="522" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="540" y="585" style="fill:#516076">·</text>
+<rect x="573" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="585" style="fill:#516076">·</text>
+<rect x="624" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="642" y="585" style="fill:#516076">—</text>
+<rect x="675" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="693" y="585" style="fill:#516076">·</text>
+<rect x="726" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="585" style="fill:#516076">·</text>
+<rect x="777" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="585" style="fill:#516076">·</text>
+<rect x="828" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="585" style="fill:#516076">·</text>
+<rect x="879" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="585" style="fill:#516076">·</text>
+<rect x="930" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="585" style="fill:#516076">·</text>
+<rect x="981" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="585" style="fill:#516076">·</text>
+<rect x="1032" y="554" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="585" style="fill:#516076">·</text>
+<text x="35" y="636" class="">core</text>
+<rect x="420" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="636" style="fill:#516076">·</text>
+<rect x="471" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="636" style="fill:#516076">·</text>
+<rect x="522" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="540" y="636" style="fill:#516076">·</text>
+<rect x="573" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="636" style="fill:#516076">·</text>
+<rect x="624" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="642" y="636" style="fill:#60a5fa">T</text>
+<rect x="675" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="693" y="636" style="fill:#516076">—</text>
+<rect x="726" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="636" style="fill:#516076">·</text>
+<rect x="777" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="636" style="fill:#516076">·</text>
+<rect x="828" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="636" style="fill:#516076">·</text>
+<rect x="879" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="636" style="fill:#516076">·</text>
+<rect x="930" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="636" style="fill:#516076">·</text>
+<rect x="981" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="636" style="fill:#516076">·</text>
+<rect x="1032" y="605" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="636" style="fill:#516076">·</text>
+<text x="35" y="687" class="">execution</text>
+<rect x="420" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="687" style="fill:#516076">·</text>
+<rect x="471" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="687" style="fill:#516076">·</text>
+<rect x="522" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="540" y="687" style="fill:#516076">·</text>
+<rect x="573" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="687" style="fill:#516076">·</text>
+<rect x="624" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="642" y="687" style="fill:#516076">·</text>
+<rect x="675" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="693" y="687" style="fill:#60a5fa">T</text>
+<rect x="726" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="687" style="fill:#516076">—</text>
+<rect x="777" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="687" style="fill:#516076">·</text>
+<rect x="828" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="687" style="fill:#516076">·</text>
+<rect x="879" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="687" style="fill:#516076">·</text>
+<rect x="930" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="687" style="fill:#516076">·</text>
+<rect x="981" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="687" style="fill:#516076">·</text>
+<rect x="1032" y="656" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="687" style="fill:#516076">·</text>
+<text x="35" y="738" class="">extension-pi-resource</text>
+<rect x="420" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="738" style="fill:#516076">·</text>
+<rect x="471" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="738" style="fill:#516076">·</text>
+<rect x="522" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#a8b6cc"/><text x="540" y="738" style="fill:#a8b6cc">M</text>
+<rect x="573" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="738" style="fill:#516076">·</text>
+<rect x="624" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="642" y="738" style="fill:#516076">·</text>
+<rect x="675" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#a8b6cc"/><text x="693" y="738" style="fill:#a8b6cc">M</text>
+<rect x="726" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="738" style="fill:#516076">·</text>
+<rect x="777" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="738" style="fill:#516076">—</text>
+<rect x="828" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="738" style="fill:#516076">·</text>
+<rect x="879" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="738" style="fill:#516076">·</text>
+<rect x="930" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="738" style="fill:#516076">·</text>
+<rect x="981" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="738" style="fill:#516076">·</text>
+<rect x="1032" y="707" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="738" style="fill:#516076">·</text>
+<text x="35" y="789" class="">local-runtime</text>
+<rect x="420" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="789" style="fill:#516076">·</text>
+<rect x="471" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="789" style="fill:#516076">·</text>
+<rect x="522" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="540" y="789" style="fill:#34d399">S</text>
+<rect x="573" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="789" style="fill:#516076">·</text>
+<rect x="624" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="642" y="789" style="fill:#516076">·</text>
+<rect x="675" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="693" y="789" style="fill:#516076">·</text>
+<rect x="726" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="789" style="fill:#516076">·</text>
+<rect x="777" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="789" style="fill:#516076">·</text>
+<rect x="828" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="789" style="fill:#516076">—</text>
+<rect x="879" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="789" style="fill:#516076">·</text>
+<rect x="930" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="948" y="789" style="fill:#34d399">S</text>
+<rect x="981" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="999" y="789" style="fill:#34d399">S</text>
+<rect x="1032" y="758" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="789" style="fill:#516076">·</text>
+<text x="35" y="840" class="">local-terminal</text>
+<rect x="420" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="840" style="fill:#516076">·</text>
+<rect x="471" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="840" style="fill:#516076">·</text>
+<rect x="522" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="540" y="840" style="fill:#60a5fa">T</text>
+<rect x="573" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="840" style="fill:#516076">·</text>
+<rect x="624" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="642" y="840" style="fill:#34d399">S</text>
+<rect x="675" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="693" y="840" style="fill:#516076">·</text>
+<rect x="726" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="840" style="fill:#516076">·</text>
+<rect x="777" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="840" style="fill:#516076">·</text>
+<rect x="828" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="846" y="840" style="fill:#34d399">S</text>
+<rect x="879" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="840" style="fill:#516076">—</text>
+<rect x="930" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="840" style="fill:#516076">·</text>
+<rect x="981" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="840" style="fill:#516076">·</text>
+<rect x="1032" y="809" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1050" y="840" style="fill:#34d399">S</text>
+<text x="35" y="891" class="">protocol</text>
+<rect x="420" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="891" style="fill:#516076">·</text>
+<rect x="471" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="891" style="fill:#516076">·</text>
+<rect x="522" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="540" y="891" style="fill:#516076">·</text>
+<rect x="573" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="891" style="fill:#516076">·</text>
+<rect x="624" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="642" y="891" style="fill:#516076">·</text>
+<rect x="675" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="693" y="891" style="fill:#516076">·</text>
+<rect x="726" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="891" style="fill:#516076">·</text>
+<rect x="777" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="891" style="fill:#516076">·</text>
+<rect x="828" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="891" style="fill:#516076">·</text>
+<rect x="879" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="891" style="fill:#516076">·</text>
+<rect x="930" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="891" style="fill:#516076">—</text>
+<rect x="981" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="891" style="fill:#516076">·</text>
+<rect x="1032" y="860" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="891" style="fill:#516076">·</text>
+<text x="35" y="942" class="">runner</text>
+<rect x="420" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="438" y="942" style="fill:#34d399">S</text>
+<rect x="471" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#a8b6cc"/><text x="489" y="942" style="fill:#a8b6cc">M</text>
+<rect x="522" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="540" y="942" style="fill:#34d399">S</text>
+<rect x="573" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="942" style="fill:#516076">·</text>
+<rect x="624" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="642" y="942" style="fill:#34d399">S</text>
+<rect x="675" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="693" y="942" style="fill:#34d399">S</text>
+<rect x="726" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#a8b6cc"/><text x="744" y="942" style="fill:#a8b6cc">M</text>
+<rect x="777" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="795" y="942" style="fill:#34d399">S</text>
+<rect x="828" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="942" style="fill:#516076">·</text>
+<rect x="879" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="942" style="fill:#516076">·</text>
+<rect x="930" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="948" y="942" style="fill:#34d399">S</text>
+<rect x="981" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="942" style="fill:#516076">—</text>
+<rect x="1032" y="911" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="942" style="fill:#516076">·</text>
+<text x="35" y="993" class="">terminal-ui</text>
+<rect x="420" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="438" y="993" style="fill:#516076">·</text>
+<rect x="471" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="489" y="993" style="fill:#516076">·</text>
+<rect x="522" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="540" y="993" style="fill:#60a5fa">T</text>
+<rect x="573" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="591" y="993" style="fill:#516076">·</text>
+<rect x="624" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="642" y="993" style="fill:#516076">·</text>
+<rect x="675" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="693" y="993" style="fill:#516076">·</text>
+<rect x="726" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="744" y="993" style="fill:#516076">·</text>
+<rect x="777" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="795" y="993" style="fill:#516076">·</text>
+<rect x="828" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="846" y="993" style="fill:#516076">·</text>
+<rect x="879" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="897" y="993" style="fill:#516076">·</text>
+<rect x="930" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="948" y="993" style="fill:#516076">·</text>
+<rect x="981" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="999" y="993" style="fill:#516076">·</text>
+<rect x="1032" y="962" width="47" height="47" rx="5" fill="#172238" stroke="#24344b"/><text x="1050" y="993" style="fill:#516076">—</text>
+<rect x="1155" y="355" width="500" height="200" rx="10" fill="#132034" stroke="#60a5fa" stroke-width="1.7"/>
+<text x="1170" y="380" class="" style="fill:#60a5fa">Важно: это не runtime-flow</text>
+<text x="1170" y="423" class="">Source import не доказывает исполнение. Type-only</text>
+<text x="1170" y="444" class="">import не является runtime-call. Manifest-only</text>
+<text x="1170" y="465" class="">dependency не означает подключённый модуль.</text>
+<rect x="1155" y="590" width="500" height="260" rx="10" fill="#132034" stroke="#fbbf24" stroke-width="1.7"/>
+<text x="1170" y="615" class="" style="fill:#fbbf24">Что здесь особенно показательно</text>
+<text x="1170" y="658" class="">runner → adapter-pi-ai / execution: M.</text>
+<text x="1170" y="679" class="">extension-pi-resource → core /</text>
+<text x="1170" y="700" class="">adapter-pi-durable: M. adapter-codemode → engine:</text>
+<text x="1170" y="721" class="">T (контракт BuiltinExtension).</text>
+</svg>

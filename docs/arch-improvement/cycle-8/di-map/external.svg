@@ -1,0 +1,261 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200" role="img" aria-label="07 · Прямые зависимости на SDK и другие библиотеки"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs><style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;fill:#e2e8f0;font-size:16px}.small{font-size:13px;fill:#a8b6cc}.title{font-family:system-ui,sans-serif;font-size:29px;font-weight:700}.head{font-family:system-ui,sans-serif;font-size:20px;font-weight:600}</style><rect width="100%" height="100%" fill="#0b1220"/><text x="35" y="44" class="title">07 · Прямые зависимости на SDK и другие библиотеки</text><text x="35" y="74" class="small">Это source imports / exports / resolve, не все транзитивные npm dependencies. Node built-ins сгруппированы, не считаются npm packages.</text>
+<text x="455" y="385" transform="rotate(-55 455 385)" class="small">chord</text>
+<text x="517" y="385" transform="rotate(-55 517 385)" class="small">pi-ai</text>
+<text x="579" y="385" transform="rotate(-55 579 385)" class="small">pi-codemode</text>
+<text x="641" y="385" transform="rotate(-55 641 385)" class="small">pi-coding-agent</text>
+<text x="703" y="385" transform="rotate(-55 703 385)" class="small">pi-durable</text>
+<text x="765" y="385" transform="rotate(-55 765 385)" class="small">pi-tui</text>
+<text x="827" y="385" transform="rotate(-55 827 385)" class="small">@silvia-odwyer/photon-node</text>
+<text x="889" y="385" transform="rotate(-55 889 385)" class="small">@sinclair/typebox</text>
+<text x="951" y="385" transform="rotate(-55 951 385)" class="small">Node built-ins</text>
+<text x="1013" y="385" transform="rotate(-55 1013 385)" class="small">chalk</text>
+<text x="1075" y="385" transform="rotate(-55 1075 385)" class="small">highlight.js</text>
+<text x="1137" y="385" transform="rotate(-55 1137 385)" class="small">proper-lockfile</text>
+<text x="1199" y="385" transform="rotate(-55 1199 385)" class="small">zod</text>
+<text x="35" y="431" class="">adapter-codemode</text>
+<rect x="430" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="431" style="fill:#3b4b64">·</text>
+<rect x="492" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="431" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-codemode/src/codemode.ts#L1" target="_blank">
+<rect x="554" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="575" y="431" style="fill:#34d399">S</text>
+</a>
+<rect x="616" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="637" y="431" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-codemode/src/codemode.ts#L2" target="_blank">
+<rect x="678" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="699" y="431" style="fill:#34d399">S</text>
+</a>
+<rect x="740" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="431" style="fill:#3b4b64">·</text>
+<rect x="802" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="431" style="fill:#3b4b64">·</text>
+<rect x="864" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="431" style="fill:#3b4b64">·</text>
+<rect x="926" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="947" y="431" style="fill:#3b4b64">·</text>
+<rect x="988" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="431" style="fill:#3b4b64">·</text>
+<rect x="1050" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="431" style="fill:#3b4b64">·</text>
+<rect x="1112" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="431" style="fill:#3b4b64">·</text>
+<rect x="1174" y="400" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1195" y="431" style="fill:#3b4b64">·</text>
+<text x="35" y="493" class="">adapter-pi-ai</text>
+<rect x="430" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="493" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-ai/src/model-setup.ts#L8" target="_blank">
+<rect x="492" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#60a5fa"/><text x="513" y="493" style="fill:#60a5fa">T</text>
+</a>
+<rect x="554" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="493" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-ai/src/model-provider.ts#L2" target="_blank">
+<rect x="616" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="637" y="493" style="fill:#34d399">S</text>
+</a>
+<rect x="678" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="493" style="fill:#3b4b64">·</text>
+<rect x="740" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="493" style="fill:#3b4b64">·</text>
+<rect x="802" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="493" style="fill:#3b4b64">·</text>
+<rect x="864" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="493" style="fill:#3b4b64">·</text>
+<rect x="926" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="947" y="493" style="fill:#3b4b64">·</text>
+<rect x="988" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="493" style="fill:#3b4b64">·</text>
+<rect x="1050" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="493" style="fill:#3b4b64">·</text>
+<rect x="1112" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="493" style="fill:#3b4b64">·</text>
+<rect x="1174" y="462" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1195" y="493" style="fill:#3b4b64">·</text>
+<text x="35" y="555" class="">adapter-pi-durable</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/control-channel.ts#L3" target="_blank">
+<rect x="430" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="451" y="555" style="fill:#34d399">S</text>
+</a>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/bridge/assistant-message-builder.ts#L1" target="_blank">
+<rect x="492" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="513" y="555" style="fill:#34d399">S</text>
+</a>
+<rect x="554" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="555" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/bridge/tool-result-presentation.ts#L1" target="_blank">
+<rect x="616" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="637" y="555" style="fill:#34d399">S</text>
+</a>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/binding-commands.ts#L1" target="_blank">
+<rect x="678" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="699" y="555" style="fill:#34d399">S</text>
+</a>
+<rect x="740" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="555" style="fill:#3b4b64">·</text>
+<rect x="802" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="555" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/schema-port.ts#L1" target="_blank">
+<rect x="864" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="885" y="555" style="fill:#34d399">S</text>
+</a>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/control-channel.ts#L1" target="_blank">
+<rect x="926" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="947" y="555" style="fill:#34d399">S</text>
+</a>
+<rect x="988" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="555" style="fill:#3b4b64">·</text>
+<rect x="1050" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="555" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/session-lock-eviction.ts#L8" target="_blank">
+<rect x="1112" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1133" y="555" style="fill:#34d399">S</text>
+</a>
+<rect x="1174" y="524" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1195" y="555" style="fill:#3b4b64">·</text>
+<text x="35" y="617" class="">cli</text>
+<rect x="430" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="617" style="fill:#3b4b64">·</text>
+<rect x="492" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="617" style="fill:#3b4b64">·</text>
+<rect x="554" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="617" style="fill:#3b4b64">·</text>
+<rect x="616" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="637" y="617" style="fill:#3b4b64">·</text>
+<rect x="678" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="617" style="fill:#3b4b64">·</text>
+<rect x="740" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="617" style="fill:#3b4b64">·</text>
+<rect x="802" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="617" style="fill:#3b4b64">·</text>
+<rect x="864" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="617" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/cli/bin/durable-zero.js#L3" target="_blank">
+<rect x="926" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="947" y="617" style="fill:#34d399">S</text>
+</a>
+<rect x="988" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="617" style="fill:#3b4b64">·</text>
+<rect x="1050" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="617" style="fill:#3b4b64">·</text>
+<rect x="1112" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="617" style="fill:#3b4b64">·</text>
+<rect x="1174" y="586" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1195" y="617" style="fill:#3b4b64">·</text>
+<text x="35" y="679" class="">contracts</text>
+<rect x="430" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="679" style="fill:#3b4b64">·</text>
+<rect x="492" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="679" style="fill:#3b4b64">·</text>
+<rect x="554" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="679" style="fill:#3b4b64">·</text>
+<rect x="616" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="637" y="679" style="fill:#3b4b64">·</text>
+<rect x="678" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="679" style="fill:#3b4b64">·</text>
+<rect x="740" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="679" style="fill:#3b4b64">·</text>
+<rect x="802" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="679" style="fill:#3b4b64">·</text>
+<rect x="864" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="679" style="fill:#3b4b64">·</text>
+<rect x="926" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="947" y="679" style="fill:#3b4b64">·</text>
+<rect x="988" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="679" style="fill:#3b4b64">·</text>
+<rect x="1050" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="679" style="fill:#3b4b64">·</text>
+<rect x="1112" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="679" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/contracts/src/diagnostics.ts#L1" target="_blank">
+<rect x="1174" y="648" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1195" y="679" style="fill:#34d399">S</text>
+</a>
+<text x="35" y="741" class="">core</text>
+<rect x="430" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="741" style="fill:#3b4b64">·</text>
+<rect x="492" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="741" style="fill:#3b4b64">·</text>
+<rect x="554" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="741" style="fill:#3b4b64">·</text>
+<rect x="616" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="637" y="741" style="fill:#3b4b64">·</text>
+<rect x="678" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="741" style="fill:#3b4b64">·</text>
+<rect x="740" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="741" style="fill:#3b4b64">·</text>
+<rect x="802" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="741" style="fill:#3b4b64">·</text>
+<rect x="864" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="741" style="fill:#3b4b64">·</text>
+<rect x="926" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="947" y="741" style="fill:#3b4b64">·</text>
+<rect x="988" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="741" style="fill:#3b4b64">·</text>
+<rect x="1050" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="741" style="fill:#3b4b64">·</text>
+<rect x="1112" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="741" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/policy/schema.ts#L1" target="_blank">
+<rect x="1174" y="710" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1195" y="741" style="fill:#34d399">S</text>
+</a>
+<text x="35" y="803" class="">execution</text>
+<rect x="430" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="803" style="fill:#3b4b64">·</text>
+<rect x="492" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="803" style="fill:#3b4b64">·</text>
+<rect x="554" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="803" style="fill:#3b4b64">·</text>
+<rect x="616" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="637" y="803" style="fill:#3b4b64">·</text>
+<rect x="678" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="803" style="fill:#3b4b64">·</text>
+<rect x="740" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="803" style="fill:#3b4b64">·</text>
+<rect x="802" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="803" style="fill:#3b4b64">·</text>
+<rect x="864" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="803" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/execution/src/adapters/local-node-env.ts#L1" target="_blank">
+<rect x="926" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="947" y="803" style="fill:#34d399">S</text>
+</a>
+<rect x="988" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="803" style="fill:#3b4b64">·</text>
+<rect x="1050" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="803" style="fill:#3b4b64">·</text>
+<rect x="1112" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="803" style="fill:#3b4b64">·</text>
+<rect x="1174" y="772" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1195" y="803" style="fill:#3b4b64">·</text>
+<text x="35" y="865" class="">extension-pi-resource</text>
+<rect x="430" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="865" style="fill:#3b4b64">·</text>
+<rect x="492" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="865" style="fill:#3b4b64">·</text>
+<rect x="554" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="865" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/extension-pi-resource/src/pi-resource-ext.ts#L2" target="_blank">
+<rect x="616" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="637" y="865" style="fill:#34d399">S</text>
+</a>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/extension-pi-resource/src/pi-resource-ext.ts#L1" target="_blank">
+<rect x="678" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="699" y="865" style="fill:#34d399">S</text>
+</a>
+<rect x="740" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="865" style="fill:#3b4b64">·</text>
+<rect x="802" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="865" style="fill:#3b4b64">·</text>
+<rect x="864" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="865" style="fill:#3b4b64">·</text>
+<rect x="926" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="947" y="865" style="fill:#3b4b64">·</text>
+<rect x="988" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="865" style="fill:#3b4b64">·</text>
+<rect x="1050" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="865" style="fill:#3b4b64">·</text>
+<rect x="1112" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="865" style="fill:#3b4b64">·</text>
+<rect x="1174" y="834" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1195" y="865" style="fill:#3b4b64">·</text>
+<text x="35" y="927" class="">local-runtime</text>
+<rect x="430" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="927" style="fill:#3b4b64">·</text>
+<rect x="492" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="927" style="fill:#3b4b64">·</text>
+<rect x="554" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="927" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-runtime/src/skills.ts#L2" target="_blank">
+<rect x="616" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="637" y="927" style="fill:#34d399">S</text>
+</a>
+<rect x="678" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="927" style="fill:#3b4b64">·</text>
+<rect x="740" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="927" style="fill:#3b4b64">·</text>
+<rect x="802" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="927" style="fill:#3b4b64">·</text>
+<rect x="864" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="927" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-runtime/src/client.ts#L1" target="_blank">
+<rect x="926" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="947" y="927" style="fill:#34d399">S</text>
+</a>
+<rect x="988" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="927" style="fill:#3b4b64">·</text>
+<rect x="1050" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="927" style="fill:#3b4b64">·</text>
+<rect x="1112" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="927" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-runtime/src/index.ts#L10" target="_blank">
+<rect x="1174" y="896" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1195" y="927" style="fill:#34d399">S</text>
+</a>
+<text x="35" y="989" class="">local-terminal</text>
+<rect x="430" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="989" style="fill:#3b4b64">·</text>
+<rect x="492" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="989" style="fill:#3b4b64">·</text>
+<rect x="554" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="989" style="fill:#3b4b64">·</text>
+<rect x="616" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="637" y="989" style="fill:#3b4b64">·</text>
+<rect x="678" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="989" style="fill:#3b4b64">·</text>
+<rect x="740" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="989" style="fill:#3b4b64">·</text>
+<rect x="802" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="989" style="fill:#3b4b64">·</text>
+<rect x="864" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="989" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-terminal/src/launch.ts#L1" target="_blank">
+<rect x="926" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="947" y="989" style="fill:#34d399">S</text>
+</a>
+<rect x="988" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="989" style="fill:#3b4b64">·</text>
+<rect x="1050" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="989" style="fill:#3b4b64">·</text>
+<rect x="1112" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="989" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-terminal/src/client.ts#L4" target="_blank">
+<rect x="1174" y="958" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1195" y="989" style="fill:#34d399">S</text>
+</a>
+<text x="35" y="1051" class="">protocol</text>
+<rect x="430" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="1051" style="fill:#3b4b64">·</text>
+<rect x="492" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="1051" style="fill:#3b4b64">·</text>
+<rect x="554" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="1051" style="fill:#3b4b64">·</text>
+<rect x="616" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="637" y="1051" style="fill:#3b4b64">·</text>
+<rect x="678" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="1051" style="fill:#3b4b64">·</text>
+<rect x="740" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="1051" style="fill:#3b4b64">·</text>
+<rect x="802" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="1051" style="fill:#3b4b64">·</text>
+<rect x="864" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="1051" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/protocol/src/transport/stdio-server.ts#L1" target="_blank">
+<rect x="926" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="947" y="1051" style="fill:#34d399">S</text>
+</a>
+<rect x="988" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="1051" style="fill:#3b4b64">·</text>
+<rect x="1050" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="1051" style="fill:#3b4b64">·</text>
+<rect x="1112" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="1051" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/protocol/src/jsonrpc/schema.ts#L1" target="_blank">
+<rect x="1174" y="1020" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1195" y="1051" style="fill:#34d399">S</text>
+</a>
+<text x="35" y="1113" class="">runner</text>
+<rect x="430" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="1113" style="fill:#3b4b64">·</text>
+<rect x="492" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="1113" style="fill:#3b4b64">·</text>
+<rect x="554" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="1113" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L18" target="_blank">
+<rect x="616" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="637" y="1113" style="fill:#34d399">S</text>
+</a>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L10" target="_blank">
+<rect x="678" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="699" y="1113" style="fill:#34d399">S</text>
+</a>
+<rect x="740" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="761" y="1113" style="fill:#3b4b64">·</text>
+<rect x="802" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="823" y="1113" style="fill:#3b4b64">·</text>
+<rect x="864" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="1113" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L1" target="_blank">
+<rect x="926" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="947" y="1113" style="fill:#34d399">S</text>
+</a>
+<rect x="988" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1009" y="1113" style="fill:#3b4b64">·</text>
+<rect x="1050" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1071" y="1113" style="fill:#3b4b64">·</text>
+<rect x="1112" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="1113" style="fill:#3b4b64">·</text>
+<rect x="1174" y="1082" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1195" y="1113" style="fill:#3b4b64">·</text>
+<text x="35" y="1175" class="">terminal-ui</text>
+<rect x="430" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="451" y="1175" style="fill:#3b4b64">·</text>
+<rect x="492" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="513" y="1175" style="fill:#3b4b64">·</text>
+<rect x="554" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="575" y="1175" style="fill:#3b4b64">·</text>
+<rect x="616" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="637" y="1175" style="fill:#3b4b64">·</text>
+<rect x="678" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="699" y="1175" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/terminal-ui/src/index.d.ts#L2" target="_blank">
+<rect x="740" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="761" y="1175" style="fill:#34d399">S</text>
+</a>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/terminal-ui/vendor/utils/photon.js#L4" target="_blank">
+<rect x="802" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="823" y="1175" style="fill:#34d399">S</text>
+</a>
+<rect x="864" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="885" y="1175" style="fill:#3b4b64">·</text>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/terminal-ui/vendor/config.js#L1" target="_blank">
+<rect x="926" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="947" y="1175" style="fill:#34d399">S</text>
+</a>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/terminal-ui/vendor/modes/interactive/theme/theme.js#L4" target="_blank">
+<rect x="988" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1009" y="1175" style="fill:#34d399">S</text>
+</a>
+<a href="https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/terminal-ui/vendor/utils/syntax-highlight.js#L1" target="_blank">
+<rect x="1050" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#34d399"/><text x="1071" y="1175" style="fill:#34d399">S</text>
+</a>
+<rect x="1112" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1133" y="1175" style="fill:#3b4b64">·</text>
+<rect x="1174" y="1144" width="56" height="47" rx="5" fill="#172238" stroke="#3b4b64"/><text x="1195" y="1175" style="fill:#3b4b64">·</text>
+</svg>

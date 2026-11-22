@@ -1,0 +1,22 @@
+flowchart TB
+  CLI["cli / runner/main.ts"] -->|assemble| ROOT["runner: assembleDurableZero"]
+  TUI["terminal-ui + ZeroTerminalClient"] -->|Unix socket JSON-RPC| HOST["local-runtime: startRuntime"]
+  HOST -->|assemble| ROOT
+  ROOT -->|engine injection| CORE["core: SessionCoordinator"]
+  CORE -->|submit / abort / state| ENGINE["adapter-pi-durable: PiDurableEngine"]
+  ENGINE -->|openDurable| HARNESS["Native Harness + Chord"]
+  HARNESS -->|models| MODEL["Pi ModelRuntime"]
+  HARNESS -->|tools| REG["Native Registry"]
+  HARNESS -->|env callback| ENV["ExecutionEnvs: Core or native factory"]
+  HARNESS -->|storage| DB["Native SQLite session"]
+  HARNESS -.->|state / events via adapter| HOST
+  HOST -.->|notifications| TUI
+  class ROOT,HOST,HARNESS,DB native;
+  class CORE,ENGINE,ENV public;
+  class MODEL,REG lower;
+
+classDef public fill:#0d3328,stroke:#34d399,color:#ecfdf5;
+classDef lower fill:#392d12,stroke:#fbbf24,color:#fffbeb;
+classDef fixed fill:#3b1923,stroke:#fb7185,color:#fff1f2;
+classDef dormant fill:#202c40,stroke:#94a3b8,color:#e2e8f0;
+classDef native fill:#142c4d,stroke:#60a5fa,color:#eff6ff;

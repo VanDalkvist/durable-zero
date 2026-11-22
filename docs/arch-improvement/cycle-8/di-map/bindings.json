@@ -1,0 +1,1007 @@
+{
+  "sourceSha": "85afe89869e60b887703d215005d4c37bac3c177",
+  "sourceLabel": "PR #3 exact source; diagram artifacts on separate docs branch",
+  "date": "2026-11-06",
+  "scope": "Все workspace packages + публичные assembly options, PiRuntimeDependencies, builtin/resource/model/storage/host/transport/UI seams. Не все транзитивные npm packages и не каждый private helper SDK.",
+  "legend": {
+    "public": {
+      "label": "G · Явная DI / подключение уже есть",
+      "color": "#15803d",
+      "note": "Есть реальный входной параметр и потребитель. Уровень API указан; зелёный не означает полную приёмку продукта."
+    },
+    "lower": {
+      "label": "Y · Только нижний native API",
+      "color": "#a16207",
+      "note": "Реализацию передать можно, но верхний assembleDurableZero её не выставляет."
+    },
+    "fixed": {
+      "label": "R · Выбор зашит / нет слота",
+      "color": "#b91c1c",
+      "note": "Для этой замены нужно менять recipe/bootstrap или использовать другой host. Не всякая фиксированная внутренняя часть — баг."
+    },
+    "dormant": {
+      "label": "D · Есть код/контракт, не включён",
+      "color": "#64748b",
+      "note": "Не является рабочей точкой замены штатного native startup."
+    },
+    "native": {
+      "label": "N · Намеренный native owner",
+      "color": "#2563eb",
+      "note": "Часть Pi-backed реализации. Не предписывается оборачивать каждый SDK constructor новым DI-контрактом."
+    }
+  },
+  "bindings": [
+    {
+      "id": "engine",
+      "name": "Движок агента",
+      "status": "public",
+      "entry": "assembleDurableZero({ engine })",
+      "implementation": "IAgentEngine → PiDurableEngine по умолчанию",
+      "consumer": "SessionCoordinator.engine.start / submit / abort / close",
+      "how": "Передать другую реализацию IAgentEngine в основной API сборки.",
+      "limitation": "Generic engine получает stdio/Core, но сборка не возвращает ему native view/controller; terminal host требует эти порты.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 83,
+          "quote": "if (options.engine) {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L83"
+        },
+        {
+          "file": "packages/core/src/session/coordinator.ts",
+          "line": 81,
+          "quote": "return await this.engine.submit(input, options);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/session/coordinator.ts#L81"
+        },
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 216,
+          "quote": "...(nativeEngine ? { view: nativeEngine.view, controller: nativeEngine.controller, isIdle: () => nativeEngine!.isIdle() } : {}),",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L216"
+        },
+        {
+          "file": "packages/local-runtime/src/index.ts",
+          "line": 70,
+          "quote": "if (!instance.view || !instance.controller) throw new Error(\"The terminal runtime requires native presentation and control ports\");",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-runtime/src/index.ts#L70"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Есть fast-path mock-engine тест; это не доказательство совместимости любого engine с native terminal."
+    },
+    {
+      "id": "native-env",
+      "name": "Native execution environment",
+      "status": "public",
+      "entry": "assembleDurableZero({ nativeExecutionEnvFactory })",
+      "implementation": "SDK NodeExecutionEnv по умолчанию",
+      "consumer": "ExecutionEnvs → Harness.env → filesystem / exec tools",
+      "how": "Передать factory(target, chordContext), возвращающую SDK ExecutionEnv.",
+      "limitation": "Нельзя одновременно передать Core factory. Полный SDK-контракт обязателен; CLI/socket-host не выставляют этот параметр.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 121,
+          "quote": "options.nativeExecutionEnvFactory ??",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L121"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 161,
+          "quote": "const created = await this.#nativeFactory(target, context);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L161"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "В native-env-seam.test.ts есть реальные startup/file-effect проверки. В этом разборе не перезапускались."
+    },
+    {
+      "id": "core-env",
+      "name": "Core execution environment",
+      "status": "public",
+      "entry": "assembleDurableZero({ executionEnvFactory })",
+      "implementation": "IExecutionEnvironment → CoreExecutionEnvAdapter",
+      "consumer": "ExecutionEnvs → native Harness.env",
+      "how": "Передать свою Core factory; можно использовать adapter из пакета execution.",
+      "limitation": "Core SPI уже native SDK; неподдержанные расширенные операции дают typed unsupported, это не полная замена любого native backend.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 65,
+          "quote": "if (options.executionEnvFactory && options.nativeExecutionEnvFactory) {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L65"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 174,
+          "quote": "const createdCore = await this.#coreFactory({ cwd: key, conversationId: target.conversationId });",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L174"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 182,
+          "quote": "adapter = new CoreExecutionEnvAdapter(createdCore, key);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L182"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "В native-env-seam.test.ts есть native startup + effect через custom Core factory; здесь не перезапускались."
+    },
+    {
+      "id": "extensions",
+      "name": "Обычные Pi-расширения и tools",
+      "status": "public",
+      "entry": "assembleDurableZero({ extensions, skills, noGlobalExtensions })",
+      "implementation": "DefaultResourceLoader + ExtensionRunner",
+      "consumer": "installExtensionTools → native Registry; pending providers → ModelRuntime",
+      "how": "Передать пути extensions/skills; расширение регистрирует tools/providers через Pi API.",
+      "limitation": "Это работающий путь добавления, но не API удаления/замены стандартных builtins или интегратора MCP.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 89,
+          "quote": "...(options.extensions ?? (options.extension ? [options.extension] : [])),",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L89"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 102,
+          "quote": "await resourceLoader.reload();",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L102"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/extension-mount.ts",
+          "line": 141,
+          "quote": "installExtensionTools(registry, adapted);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/extension-mount.ts#L141"
+        }
+      ],
+      "kind": "extension",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "streams",
+      "name": "Вход / выход RPC",
+      "status": "public",
+      "entry": "assembleDurableZero({ stdin, stdout, onNotification })",
+      "implementation": "Readable/Writable + callback",
+      "consumer": "StdioJsonRpcServer и coordinator.events",
+      "how": "Передать свои streams и слушатель уведомлений.",
+      "limitation": "Заменяются IO/наблюдатель, не сама transport strategy; socket-host использует именно этот путь.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 161,
+          "quote": "...(options.stdin !== undefined ? { stdin: options.stdin } : {}),",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L161"
+        },
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 199,
+          "quote": "options.onNotification?.(\"session/event\", payload);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L199"
+        },
+        {
+          "file": "packages/local-runtime/src/index.ts",
+          "line": 66,
+          "quote": "...options, sessionDir: resolve(options.sessionDir), noGlobalExtensions: true, stdin: input, stdout: output,",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-runtime/src/index.ts#L66"
+        }
+      ],
+      "kind": "io",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "ui-ports",
+      "name": "Данные, команды и settings UI",
+      "status": "public",
+      "entry": "runDurableTui(source, controller, settings, ...)",
+      "implementation": "TerminalViewSource / TerminalController / TerminalSettings",
+      "consumer": "terminal-ui/vendor/experimental/durable/tui.js",
+      "how": "Своя оболочка может передать реализации трёх UI-контрактов в библиотечную функцию.",
+      "limitation": "Это локальная DI на UI-границе. Native DurableView — намеренная concrete UI-зависимость, не утечка в Core.",
+      "evidence": [
+        {
+          "file": "packages/terminal-ui/src/index.d.ts",
+          "line": 43,
+          "quote": "export function runDurableTui(source: TerminalViewSource, controller: TerminalController, settings: TerminalSettings,",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/terminal-ui/src/index.d.ts#L43"
+        },
+        {
+          "file": "packages/local-terminal/src/main.ts",
+          "line": 27,
+          "quote": "await runDurableTui(client, client, {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-terminal/src/main.ts#L27"
+        }
+      ],
+      "kind": "ui",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "model-runtime",
+      "name": "Реализация runtime моделей",
+      "status": "lower",
+      "entry": "PiDurableEngine.dependencies.modelRuntime",
+      "implementation": "Pi ModelRuntime; fallback ModelRuntime.create()",
+      "consumer": "Harness.open({ models: modelRuntime }); controller.setModel",
+      "how": "Собрать PiDurableEngine/openDurable с dependencies.modelRuntime; верхний recipe придётся адаптировать.",
+      "limitation": "assembleDurableZero не принимает этот слот. Требуется native ModelRuntime contract, не Core IModelProvider.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+          "line": 37,
+          "quote": "readonly modelRuntime?: ModelRuntime;",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-types.ts#L37"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 77,
+          "quote": "const modelRuntime = deps?.modelRuntime ?? (await ModelRuntime.create());",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L77"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 193,
+          "quote": "{ models: modelRuntime, registry, settings, env: envs.env, onReport: report },",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L193"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "native-providers",
+      "name": "Native provider implementations",
+      "status": "lower",
+      "entry": "PiDurableEngine.dependencies.nativeProviders",
+      "implementation": "SDK Provider[]",
+      "consumer": "modelRuntime.registerNativeProvider(provider)",
+      "how": "Передать nativeProviders на нижнем уровне; через Pi extensions также есть registerProvider/native-provider путь.",
+      "limitation": "provider/model строки выбирают модель, но не заменяют ModelRuntime. Прямой список providers не открыт верхним recipe.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+          "line": 38,
+          "quote": "readonly nativeProviders?: readonly Provider[];",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-types.ts#L38"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 78,
+          "quote": "for (const provider of deps?.nativeProviders ?? []) {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L78"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 59,
+          "quote": "try { modelRuntime.registerNativeProvider(provider); } catch (err) { logRegError(\"native provider\", provider?.id ?? \"unknown\", err); }",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L59"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "settings",
+      "name": "Settings/config provider",
+      "status": "lower",
+      "entry": "PiDurableEngine.dependencies.settingsManager",
+      "implementation": "Native SettingsManager",
+      "consumer": "createHarnessSettings; model defaults; resource loading",
+      "how": "Передать совместимый native SettingsManager на нижнем уровне.",
+      "limitation": "Верхний runner всегда создаёт SettingsManager.create(cwd). Это native тип, не произвольный zero-neutral config provider.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 92,
+          "quote": "const settingsManager = SettingsManager.create(cwd);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L92"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 85,
+          "quote": "const settingsManager = deps?.settingsManager ?? SettingsManager.create(location.cwd);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L85"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "resources",
+      "name": "Ресурсы: AGENTS / skills / extensions",
+      "status": "lower",
+      "entry": "PiDurableEngine.dependencies.resourceLoader",
+      "implementation": "DefaultResourceLoader; extension-pi-resource оборачивает его",
+      "consumer": "reload/getExtensions/getSkills → prompt и ExtensionRunner",
+      "how": "Передать native-compatible loader при ручной сборке PiDurableEngine/openDurable.",
+      "limitation": "Основная фабрика всегда создаёт DefaultResourceLoader. extension-pi-resource — data/wiring wrapper, а не отдельный универсальный resource backend.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 94,
+          "quote": "const resourceLoader = new DefaultResourceLoader({",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L94"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+          "line": 39,
+          "quote": "readonly resourceLoader?: DefaultResourceLoader;",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-types.ts#L39"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 92,
+          "quote": "deps?.resourceLoader ??",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L92"
+        },
+        {
+          "file": "packages/extension-pi-resource/src/pi-resource-ext.ts",
+          "line": 32,
+          "quote": "return Object.assign(baseExt, {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/extension-pi-resource/src/pi-resource-ext.ts#L32"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "builtins",
+      "name": "Список дополнительных builtins",
+      "status": "lower",
+      "entry": "dependencies.builtins / openDurable.builtins или plugins",
+      "implementation": "BuiltinExtension[] (контракт в adapter-pi-durable)",
+      "consumer": "createCodingRegistry → builtinRegistry.initAll(ctx)",
+      "how": "Нижний API принимает дополнительные BuiltinExtension. Сам контракт содержит native Registry/SettingsManager.",
+      "limitation": "Верхний runner передаёт только штатный codemode. На нижнем уровне список добавляется к coding-tools/subagents, не заменяет их.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 129,
+          "quote": "...(deps?.builtins ?? []),",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L129"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 130,
+          "quote": "...(options.builtins ?? options.plugins ?? []),",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L130"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 86,
+          "quote": "builtinRegistry.register(codingToolsExtension);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L86"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/types.ts",
+          "line": 10,
+          "quote": "registry?: Registry;",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/builtin-extensions/types.ts#L10"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "codemode",
+      "name": "Codemode как целый builtin",
+      "status": "lower",
+      "entry": "dependencies.builtins: [свой codemode]",
+      "implementation": "adapter-codemode → createCodemodeExtension",
+      "consumer": "BuiltinExtension.register → registry.install(ext)",
+      "how": "Через ручную нижнюю сборку выбрать другой codemode-builtin вместо пакета adapter-codemode.",
+      "limitation": "Основной runner жёстко вызывает createCodemodeBuiltinExtension(); добавлять второй codemode поверх его списка нельзя.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 86,
+          "quote": "codemodeBuiltin = createCodemodeBuiltinExtension();",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L86"
+        },
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 116,
+          "quote": "builtins: [codemodeBuiltin],",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L116"
+        },
+        {
+          "file": "packages/adapter-codemode/src/codemode.ts",
+          "line": 35,
+          "quote": "ctx.registry.install(ext);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-codemode/src/codemode.ts#L35"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "prompt-data",
+      "name": "Файлы/содержимое system prompt",
+      "status": "lower",
+      "entry": "dependencies.prompt / openDurable.prompt",
+      "implementation": "PromptOptions: systemPromptPath/contextFiles/...",
+      "consumer": "createPiPrompt → buildSections",
+      "how": "Нижний API принимает PromptOptions; paths/sections меняют содержимое.",
+      "limitation": "Сам renderer createPiPrompt обязателен. resourceLoader/dynamicSections в итоговых options подставляются runtime-loader сверху.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 132,
+          "quote": "const promptOptions = deps?.prompt ?? options.prompt;",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L132"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 137,
+          "quote": "{ ...promptOptions, resourceLoader, dynamicSections },",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L137"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/prompt.ts",
+          "line": 122,
+          "quote": "const systemPromptOverride = tryReadPromptFile(options.systemPromptPath, \"system-prompt\");",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/prompt.ts#L122"
+        }
+      ],
+      "kind": "configuration",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "dynamic-sections",
+      "name": "Динамические prompt sections",
+      "status": "lower",
+      "entry": "dependencies.dynamicSections",
+      "implementation": "DynamicPromptSections по умолчанию",
+      "consumer": "ExtensionRunner и createPiPrompt читают/обновляют sections",
+      "how": "Передать совместимый объект на нижнем уровне.",
+      "limitation": "Верхний assembleDurableZero не выставляет этот параметр.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 116,
+          "quote": "const dynamicSections = deps?.dynamicSections ?? new DynamicPromptSections();",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L116"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/extension-mount.ts",
+          "line": 212,
+          "quote": "dynamicSections.updateSections(beforeStart.systemPromptOptions.sections);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/extension-mount.ts#L212"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "sandbox",
+      "name": "Sandbox внутри adapter-codemode",
+      "status": "fixed",
+      "entry": "Нет factory/constructor option",
+      "implementation": "new CodemodeSandbox() внутри register",
+      "consumer": "createCodemodeExtension({ sandbox })",
+      "how": "Сейчас — заменить весь codemode builtin нижним API либо менять adapter-codemode; независимого sandboxFactory нет.",
+      "limitation": "Нельзя передать другой sandbox основному codemode адаптеру снаружи.",
+      "evidence": [
+        {
+          "file": "packages/adapter-codemode/src/codemode.ts",
+          "line": 24,
+          "quote": "const sandbox = new CodemodeSandbox();",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-codemode/src/codemode.ts#L24"
+        },
+        {
+          "file": "packages/adapter-codemode/src/codemode.ts",
+          "line": 29,
+          "quote": "const ext = createCodemodeExtension({",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-codemode/src/codemode.ts#L29"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "coding-tools",
+      "name": "Штатный coding-tools builtin",
+      "status": "fixed",
+      "entry": "Всегда добавляется в createCodingRegistry",
+      "implementation": "coding-tools.ts → SDK CodingTools/createCodingTools",
+      "consumer": "native Registry → read/write/edit/bash tools",
+      "how": "Для полной замены builtin нужен иной recipe/изменение bootstrap: выбрать финальный список до регистрации.",
+      "limitation": "customBuiltins с тем же id отклоняется. Это не утверждение, что Pi extensions вообще не могут переопределить отдельное имя tool.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 86,
+          "quote": "builtinRegistry.register(codingToolsExtension);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L86"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/registry.ts",
+          "line": 8,
+          "quote": "if (this.#extensions.has(extension.id)) {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/builtin-extensions/registry.ts#L8"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/coding-tools.ts",
+          "line": 18,
+          "quote": "ctx.registry.install(tools);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/builtin-extensions/coding-tools.ts#L18"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "subagents",
+      "name": "Штатный subagents builtin",
+      "status": "fixed",
+      "entry": "Всегда добавляется в createCodingRegistry",
+      "implementation": "builtin-extensions/subagents.ts",
+      "consumer": "native Registry → SDK subagent extension",
+      "how": "Для замены/исключения целого builtin изменить конфигурационный bootstrap, не снимать защиту от неявных дублей.",
+      "limitation": "Настройка policy — другое: меняет данные политики, не реализацию builtin.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 87,
+          "quote": "builtinRegistry.register(subagentsExtension);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L87"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/builtin-extensions/subagents.ts",
+          "line": 6,
+          "quote": "id: \"subagents\",",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/builtin-extensions/subagents.ts#L6"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "mcp",
+      "name": "Интегратор MCP",
+      "status": "fixed",
+      "entry": "runner extensionFactories: createMcpExtension()",
+      "implementation": "Native Pi MCP ExtensionFactory",
+      "consumer": "ResourceLoader → ExtensionRunner → adapted tools",
+      "how": "Конфигурация серверов — Pi config; замена самого интегратора требует собственного resource loader/recipe.",
+      "limitation": "Отдельного upper-level mcpFactory нет. В PR readiness ожидается через mcp command; подтверждённый startup blocker остаётся открытым.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 98,
+          "quote": "extensionFactories: [{ name: \"mcp\", factory: createMcpExtension() }],",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L98"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/extension-mount.ts",
+          "line": 182,
+          "quote": "if (mcpStatus) await mcpStatus.handler(\"\", extensionRunner.createCommandContext());",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/extension-mount.ts#L182"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "tool-search",
+      "name": "Tool discovery / namespaces",
+      "status": "fixed",
+      "entry": "Создаются/устанавливаются внутри Pi bootstrap",
+      "implementation": "createToolSearchExtension + DynamicCodemodeNamespaces",
+      "consumer": "native registry / extension tool sync",
+      "how": "Отдельного внешнего factory option нет; для смены реализации менять Pi bootstrap или реализовывать свой backend.",
+      "limitation": "Это internal Pi integration, не готовый generic Zero slot.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 104,
+          "quote": "registry.install(createToolSearchExtension());",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L104"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 117,
+          "quote": "const dynamicNamespaces = new DynamicCodemodeNamespaces();",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L117"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "prompt-renderer",
+      "name": "Сам renderer prompt",
+      "status": "fixed",
+      "entry": "Всегда registry.install(createPiPrompt(...))",
+      "implementation": "adapter-pi-durable/engine/prompt.ts",
+      "consumer": "native registry sections",
+      "how": "Для другой реализации renderer нужен иной конфигурационный bootstrap.",
+      "limitation": "PromptOptions позволяют менять данные, не выбирать другой renderer.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/harness-setup.ts",
+          "line": 105,
+          "quote": "registry.install(createPiPrompt(settingsManager, cwd, promptOptions));",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/harness-setup.ts#L105"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/prompt.ts",
+          "line": 121,
+          "quote": "export function createPiPrompt(_settings: SettingsManager, fallbackCwd: string, options: PromptOptions = {}) {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/prompt.ts#L121"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "transport",
+      "name": "RPC transport implementation",
+      "status": "fixed",
+      "entry": "runner: new StdioJsonRpcServer(...)",
+      "implementation": "protocol/StdioJsonRpcServer implements ITransportStrategy",
+      "consumer": "Inline handler → SessionCoordinator",
+      "how": "Streams доступны сверху, но transportFactory/ITransportStrategy в assemble options отсутствует. Для иной стратегии — собственный host/bootstrap.",
+      "limitation": "Socket-host оборачивает stdio через PassThrough; это реальный другой host, а не injected transport strategy.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 160,
+          "quote": "const server = new StdioJsonRpcServer({",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L160"
+        },
+        {
+          "file": "packages/protocol/src/transport/stdio-server.ts",
+          "line": 13,
+          "quote": "export class StdioJsonRpcServer implements ITransportStrategy {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/protocol/src/transport/stdio-server.ts#L13"
+        },
+        {
+          "file": "packages/local-runtime/src/index.ts",
+          "line": 84,
+          "quote": "const bridge = new StdioJsonRpcServer({",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-runtime/src/index.ts#L84"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "ui-choice",
+      "name": "Выбор готового терминального UI",
+      "status": "fixed",
+      "entry": "local-terminal/main.ts hard import",
+      "implementation": "@local-durable/terminal-ui.runDurableTui",
+      "consumer": "ZeroTerminalClient через Native view/controller contract",
+      "how": "Другой frontend может использовать RPC client и свои widgets, но main не принимает render/UI factory.",
+      "limitation": "DI в source/controller функции есть; выбор самой реализации UI в готовом entrypoint фиксирован.",
+      "evidence": [
+        {
+          "file": "packages/local-terminal/src/main.ts",
+          "line": 19,
+          "quote": "const { runDurableTui } = await import(\"@local-durable/terminal-ui\");",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-terminal/src/main.ts#L19"
+        },
+        {
+          "file": "packages/local-terminal/src/main.ts",
+          "line": 27,
+          "quote": "await runDurableTui(client, client, {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-terminal/src/main.ts#L27"
+        }
+      ],
+      "kind": "ui",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "storage",
+      "name": "Native session storage",
+      "status": "native",
+      "entry": "runtime-loader: openNodeSqliteStorage(location.database)",
+      "implementation": "SDK SQLite storage",
+      "consumer": "Harness.open → native sessions/tasks/documents",
+      "how": "Никакого storageFactory в текущем Pi recipe нет. Для другого native storage нужен отдельный обоснованный adapter seam; другой backend возможен через engine SPI.",
+      "limitation": "Это намеренно конкретный Pi-backed backend, не требование заменить SQLite сейчас. Core ISessionStore не управляет этим запуском.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 192,
+          "quote": "await openNodeSqliteStorage(location.database),",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L192"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 191,
+          "quote": "harness = await Harness.open(",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L191"
+        }
+      ],
+      "kind": "owner",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "harness",
+      "name": "Native execution owner",
+      "status": "native",
+      "entry": "PiDurableEngine → openDurable → Harness.open",
+      "implementation": "@earendil-works/pi-durable + Chord",
+      "consumer": "Model/tool/session execution; view/controller создаёт adapter",
+      "how": "В Durable реализации сохраняется один native Harness. Для другого engine есть внешний IAgentEngine слот.",
+      "limitation": "Отдельный HarnessFactory не выставлен. Не требуется инъектировать каждую SDK-внутренность или создавать второй execution loop.",
+      "evidence": [
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 191,
+          "quote": "harness = await Harness.open(",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L191"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/pi-durable-engine.ts",
+          "line": 81,
+          "quote": "this.#instance = await openDurable({",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/pi-durable-engine.ts#L81"
+        }
+      ],
+      "kind": "owner",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "model-port",
+      "name": "Core IModelProvider / adapter-pi-ai",
+      "status": "dormant",
+      "entry": "Есть в пакетах; в standard recipe не подключён",
+      "implementation": "PiAiModelProvider; setupRunnerModels",
+      "consumer": "Самостоятельный model-setup helper, не native runtime-loader",
+      "how": "Не считать наличие Core порта рабочим способом смены моделей в штатном Harness; реальный нижний слот — native modelRuntime.",
+      "limitation": "Не нужно механически заставлять native Harness работать через этот unused generic port.",
+      "evidence": [
+        {
+          "file": "packages/core/src/models/provider.ts",
+          "line": 6,
+          "quote": "export interface IModelProvider {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/models/provider.ts#L6"
+        },
+        {
+          "file": "packages/adapter-pi-ai/src/model-setup.ts",
+          "line": 74,
+          "quote": "const modelProvider = new PiAiModelProvider(modelRuntime, settingsManager);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-ai/src/model-setup.ts#L74"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-loader.ts",
+          "line": 77,
+          "quote": "const modelRuntime = deps?.modelRuntime ?? (await ModelRuntime.create());",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-loader.ts#L77"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "store-port",
+      "name": "Core ISessionStore / PiDurableSessionStore",
+      "status": "dormant",
+      "entry": "Есть standalone adapter; coordinator принимает только engine/sessionDir",
+      "implementation": "PiDurableSessionStore implements ISessionStore",
+      "consumer": "Не mounted в native reference startup",
+      "how": "В этой сборке заменить store через Core нельзя: native SQLite открывается отдельно.",
+      "limitation": "Не вводить параллельного владельца native session ради использования существующего интерфейса.",
+      "evidence": [
+        {
+          "file": "packages/core/src/session/store.ts",
+          "line": 8,
+          "quote": "export interface ISessionStore {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/session/store.ts#L8"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/store.ts",
+          "line": 51,
+          "quote": "export class PiDurableSessionStore implements ISessionStore {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/store.ts#L51"
+        },
+        {
+          "file": "packages/core/src/session/coordinator.ts",
+          "line": 27,
+          "quote": "constructor(options: SessionCoordinatorOptions) {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/session/coordinator.ts#L27"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "host-bridge",
+      "name": "Host tool / interaction bridge",
+      "status": "dormant",
+      "entry": "runner HostBridge(requester), Core IHostBridge; Pi dependencies.hostBridge — placeholder",
+      "implementation": "HostBridge и legacy HostRpcManager существуют отдельно",
+      "consumer": "Сборщик не создаёт HostBridge; dependencies.hostBridge в execution path не читается",
+      "how": "Для рабочего BB integration нужен реальный mount native host tools и request/response routing; DI поле само ничего не подключает.",
+      "limitation": "Core bridge и пустой Pi IHostBridge — разные типы. Legacy module globals не являются приемлемым DI решением.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/host/host-bridge.ts",
+          "line": 24,
+          "quote": "export class HostBridge implements IHostBridge {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/host/host-bridge.ts#L24"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/runtime-types.ts",
+          "line": 36,
+          "quote": "readonly hostBridge?: IHostBridge;",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/runtime-types.ts#L36"
+        },
+        {
+          "file": "packages/adapter-pi-durable/src/engine/host-rpc.ts",
+          "line": 104,
+          "quote": "let activeToolForwarder: ((toolName: string, args: unknown) => Promise<{ content: Array<{ type: \"text\"; text: string }>; isError: boolean }>) | null = null;",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-pi-durable/src/engine/host-rpc.ts#L104"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "sandbox-port",
+      "name": "Core ISandboxExtension",
+      "status": "dormant",
+      "entry": "CodemodeExtension implements ISandboxExtension",
+      "implementation": "Lifecycle metadata id/name/version/teardown",
+      "consumer": "Нет метода create/execute sandbox в этом Core SPI",
+      "how": "Это не sandbox injection point; реальная замена sandbox требует factory в codemode adapter либо другого builtin.",
+      "limitation": "Не принимать implements интерфейса за возможность подменить конкретный CodemodeSandbox.",
+      "evidence": [
+        {
+          "file": "packages/core/src/tools/sandbox.ts",
+          "line": 6,
+          "quote": "export interface ISandboxExtension {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/tools/sandbox.ts#L6"
+        },
+        {
+          "file": "packages/adapter-codemode/src/codemode.ts",
+          "line": 6,
+          "quote": "export class CodemodeExtension implements BuiltinExtension, ISandboxExtension {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-codemode/src/codemode.ts#L6"
+        },
+        {
+          "file": "packages/adapter-codemode/src/codemode.ts",
+          "line": 24,
+          "quote": "const sandbox = new CodemodeSandbox();",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/adapter-codemode/src/codemode.ts#L24"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "dispatcher",
+      "name": "Полный session dispatcher",
+      "status": "dormant",
+      "entry": "createSessionDispatcher(options) существует",
+      "implementation": "runner/dispatch/session-dispatcher.ts",
+      "consumer": "В reference composition свой ограниченный inline handler",
+      "how": "Не считать методы helper/schema автоматически mounted; production routing нужно подключать и проверять отдельно.",
+      "limitation": "Замена resolver/container не реализует отсутствующие tools/register, binding/fork capabilities.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/dispatch/session-dispatcher.ts",
+          "line": 20,
+          "quote": "export function createSessionDispatcher(options: SessionDispatcherOptions): MethodHandler {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/dispatch/session-dispatcher.ts#L20"
+        },
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 163,
+          "quote": "handler: async (method: string, params: Record<string, unknown>) => {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L163"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    },
+    {
+      "id": "execution-pkg",
+      "name": "Пакет execution в default recipe",
+      "status": "dormant",
+      "entry": "Можно явно использовать его NodeExecutionEnv в Core factory",
+      "implementation": "@durable-zero/execution vs native SDK NodeExecutionEnv",
+      "consumer": "По умолчанию runner импортирует SDK env/node, не execution package",
+      "how": "Пакет можно выбрать в своём executionEnvFactory; он не является default native execution backend.",
+      "limitation": "Наличие workspace dependency в manifest не значит, что она включена в production recipe.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 10,
+          "quote": "import { NodeExecutionEnv } from \"@earendil-works/pi-durable/env/node\";",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L10"
+        },
+        {
+          "file": "packages/execution/src/adapters/local-node-env.ts",
+          "line": 16,
+          "quote": "export class LocalNodeExecutionEnv implements IExecutionEnvironment {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/execution/src/adapters/local-node-env.ts#L16"
+        }
+      ],
+      "kind": "implementation",
+      "verification": "Не запускался новый runtime-тест; оценка по исходникам."
+    }
+  ],
+  "configurationNotDi": [
+    {
+      "name": "Конкретная LLM и thinking",
+      "route": "provider/model/thinking в assemble options; models/set в socket host",
+      "meaning": "Выбор модели в уже выбранном ModelRuntime, не DI другого runtime.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 33,
+          "quote": "provider?: string;",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L33"
+        },
+        {
+          "file": "packages/local-runtime/src/index.ts",
+          "line": 133,
+          "quote": "case \"models/set\": {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/local-runtime/src/index.ts#L133"
+        }
+      ]
+    },
+    {
+      "name": "Skills / AGENTS / extensions paths",
+      "route": "skills/extensions и files resource loader",
+      "meaning": "Выбор контента/расширений, не замена loader implementation.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 38,
+          "quote": "skills?: string[];",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L38"
+        },
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 100,
+          "quote": "...(options.skills !== undefined ? { additionalSkillPaths: options.skills } : {}),",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L100"
+        }
+      ]
+    },
+    {
+      "name": "Subagent policy",
+      "route": "session/setSubagentPolicy → engine.setSubagentPolicy",
+      "meaning": "Меняет policy record внутри native session; не меняет subagent extension implementation.",
+      "evidence": [
+        {
+          "file": "packages/runner/src/composition.ts",
+          "line": 182,
+          "quote": "if (method === \"session/setSubagentPolicy\") {",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/runner/src/composition.ts#L182"
+        },
+        {
+          "file": "packages/core/src/session/coordinator.ts",
+          "line": 153,
+          "quote": "await this.engine.setSubagentPolicy(params as SubagentPolicyRecord);",
+          "url": "https://github.com/VanDalkvist/durable-zero/blob/85afe89869e60b887703d215005d4c37bac3c177/packages/core/src/session/coordinator.ts#L153"
+        }
+      ]
+    }
+  ],
+  "methodSources": [
+    {
+      "url": "https://c4model.com/diagrams/notation",
+      "title": "C4 notation: title, legend, typed/labelled relationships"
+    },
+    {
+      "url": "https://c4model.com/faq",
+      "title": "C4 FAQ: SDKs and focused diagrams"
+    },
+    {
+      "url": "https://docs.arc42.org/section-5/",
+      "title": "arc42 building block view — static dependencies"
+    },
+    {
+      "url": "https://docs.arc42.org/section-6/",
+      "title": "arc42 runtime view — scenario interactions"
+    }
+  ],
+  "verification": "Source-traced and mechanically validated atlas; not a new product test run or full architecture PASS."
+}
